@@ -4,10 +4,11 @@
         <form class="login-form" [formGroup]="login">
             <input formControlName="email" type="text" placeholder="username" />
             <span  *ngIf="login.controls['email'].hasError('required') && login.controls['email'].touched">email is required</span>
-            <span *ngIf="login.controls['email'].hasError('email')">Please enter a valid email</span>
+            <!-- <span *ngIf="login.controls['email'].hasError('email')">Please enter a valid email</span> -->
             <input  formControlName="password" type="password" placeholder="password" />
             <span *ngIf="login.controls['password'].hasError('required') && login.controls['password'].touched">Password is required</span>
         </form>
-        <button type="button" class="btn btn-primary" (click)="Submit()"  [disabled]='login.invalid'>submit</button>
+        <button type="button" class="btn btn-primary" (click)="Submit()"  >submit</button>
     </div>
 </div>
+<!-- [disabled]='login.invalid' -->
