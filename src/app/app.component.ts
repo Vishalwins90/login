@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'login';
+login:any
+  
+
+constructor(){
+
+}
+
+ngOnInit(){
+
+
+}
 }

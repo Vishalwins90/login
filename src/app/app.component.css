@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.conatiner{
+    max-width: 650px;
+    padding: 28px;
+    margin: 0 28px;
+    box-shadow: 0 15px 20px #ABB2B9;
+    display: grid;
+    place-items: center;
+    font-weight: bold;
+}
+h2{
+    font-size: 26px;
+    font-weight: 600;
+    text-align: left;
+    color: #2f4f4f;
+    padding-bottom: 8px;
+    border-bottom: 1px solid silver;
+    text-align: center;
+}
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+.input-box{
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    width:50%;
+    /* padding-bottom: 15px; */
+    padding: 10px;
+ input:after { content:"*"; }
+}
+/* .input-box:nth-child(2n){
+    justify-content: end;
+
+} */
+.input-box label,.gender-title{
+    /* width: 95%; */
+    color: #2f4f4f;
+   
+    margin:5px 0;
+}
+.gender-title{
+font-size: 16px;
+}
+/* .input-box input{
+    height: 40px;
+    width: 95%;
+    padding:0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+} */
+/* input{
+    /* width: 100%; */
+ form{
+    width: 400px;
+    margin: auto;
+    align-items: center;
+ }
+ .conatiner{
+    margin: auto;
+ }
+ button{
+    margin: auto;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius:5px;
+    padding: 5px 10px;
+ }
+ .container-button{
+    margin: auto;
+    margin-top: 20px;
+ }
+ span{
+    color: red;
+ }
+ /* table */
+ table {
+    border-collapse: collapse;
+    width: 40%;
+margin-top: 5%;
+    
+  }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 5px;
+    
+  }
+form{
+    text-align: center;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h1{
+    text-align: center;
+    color: blue;
+  }
+  p{
+    color: red;
+  }
+  .red{
+    color:red;
+  }
