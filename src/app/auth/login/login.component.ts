@@ -28,7 +28,7 @@ export class LoginComponent {
     debugger
     // let payload=this.login.value
      let payload = {
-     username: 'kminchelle',
+     email: 'kminchelle',
        password: '0lelplR',
      }
 

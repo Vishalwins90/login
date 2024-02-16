@@ -14,34 +14,13 @@ export class LoginInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log('>>>>>>>>>>>>>>>',request);
-    
-   
-    // let currentUser = JSON.parse(localStorage.getItem('token'));
-    // console.log(currentUser)
-    //     if (currentUser) {
-    //         request = request.clone({
-    //             setHeaders: { 
-    //               Authorization: `Bearer ${currentUser}`
-    //             }
-    //         });
-    //     }
-        
-    //     return next.handle(request);
-    //   }
     let currentUser:any = (localStorage.getItem('token'));
               request = request.clone({
                   setHeaders: { 
                  Authorization: `Bearer ${currentUser}`
                 }
                });
-           
-         
           return next.handle(request);
-  
-  
               }
-
-  
 }
 
