@@ -43,7 +43,6 @@ if (element && matchdata){
   this.alluserdata.senduserdata(matchdata).subscribe((res: any) => {
     localStorage.setItem('token', res.token)
     this.router.navigate(['/Home'])
-
  });
 }
   else{
