@@ -8,7 +8,7 @@ import { AuthGuard } from '../core/login.guard';
  {
   path:'',
   component:LoginComponent,
-  //  canActivate:[AuthGuard]
+   canActivate:[AuthGuard]
  }
   ];
 
