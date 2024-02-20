@@ -14,7 +14,7 @@ export class LoginComponent {
 getdata:any=[]
 loading:any=false
   login: FormGroup<any> = this.formbuilder.group({
-    // email:   ['', [Validators.required, Validators.email]],
+  //  email:   ['', [Validators.required, Validators.email]],
     username:['',[Validators.required]],
     password: ['',[Validators.required]],
   });
@@ -31,7 +31,7 @@ loading:any=false
       username: 'kminchelle',
       password: '0lelplR',
      } 
-     ]
+     ]                
     let userdata = {
 username:this.login.value.username,
 password:this.login.value.password

@@ -9,7 +9,7 @@ import { unauthguard } from '../core/interceptor/unauth.guard';
  {
   path:'',
   component:LoginComponent,
-  // canActivate:[unauthguard]
+  
  }
   ];
 

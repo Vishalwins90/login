@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './core/login.guard';
 import { unauthguard } from './core/interceptor/unauth.guard';
+import { PagenotfoundComponent } from './feature/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {
@@ -10,17 +11,21 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
     canActivate:[unauthguard]
   },
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
-  },
+  // {
+  //   path: '',
+  //   redirectTo: 'login',
+  //   pathMatch: 'full',
+  // },
+
 {
   path:'home',
   loadChildren: () => import('./feature/feature.module').then(m => m.FeatureModule),
  canActivate:[AuthGuard]
 },
 
+
+{ path: '**', pathMatch: 'full',  
+component: PagenotfoundComponent },
 ];
 
 @NgModule({
