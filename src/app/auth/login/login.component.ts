@@ -17,6 +17,7 @@ loading:any=false
   //  email:   ['', [Validators.required, Validators.email]],
     username:['',[Validators.required]],
     password: ['',[Validators.required]],
+
   });
   constructor(public alluserdata: LoginPageService,public router:Router,private formbuilder:FormBuilder) {
 
@@ -39,14 +40,14 @@ password:this.login.value.password
 payload.forEach((element:any) => {
   let matchdata:any = payload.find((data:any)=>data.username === userdata.username && data.password === userdata.password)
 if (element && matchdata){
-  this.loading=true 
+  this.loading=true
   this.alluserdata.senduserdata(matchdata).subscribe((res: any) => {
     localStorage.setItem('token', res.token)
     this.router.navigate(['/home'])
  });
 }
   else{
-    console.log("user not found")
+    alert("user not found")
   } 
 
 });

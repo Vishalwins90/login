@@ -8,10 +8,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
-// import { AuthGuard } from './core/login.guard';
-import { AuthGuard } from './core/login.guard';
+import { AuthGuard } from './core/guard/login.guard';
 import { LoginInterceptor } from './core/interceptor/login.interceptor';
-import { unauthguard } from './core/interceptor/unauth.guard';
+import { unauthguard } from './core/guard/unauth.guard';
 @NgModule({
   declarations: [
     AppComponent,
