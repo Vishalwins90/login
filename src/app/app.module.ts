@@ -11,6 +11,7 @@ import { CoreModule } from './core/core.module';
 // import { AuthGuard } from './core/login.guard';
 import { AuthGuard } from './core/login.guard';
 import { LoginInterceptor } from './core/interceptor/login.interceptor';
+import { unauthguard } from './core/interceptor/unauth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { LoginInterceptor } from './core/interceptor/login.interceptor';
   ],
   providers: [
     AuthGuard,
+    unauthguard,
     { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

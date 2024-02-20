@@ -12,6 +12,7 @@ import { LoginPageService } from 'src/app/core/login-page.service';
 })
 export class LoginComponent {
 getdata:any=[]
+loading:any=false
   login: FormGroup<any> = this.formbuilder.group({
     // email:   ['', [Validators.required, Validators.email]],
     username:['',[Validators.required]],
@@ -22,7 +23,6 @@ getdata:any=[]
   }
   ngOnInit() {
  
-  
   }
 
   Submit() {
@@ -32,7 +32,6 @@ getdata:any=[]
       password: '0lelplR',
      } 
      ]
-    
     let userdata = {
 username:this.login.value.username,
 password:this.login.value.password
@@ -40,9 +39,10 @@ password:this.login.value.password
 payload.forEach((element:any) => {
   let matchdata:any = payload.find((data:any)=>data.username === userdata.username && data.password === userdata.password)
 if (element && matchdata){
+  this.loading=true 
   this.alluserdata.senduserdata(matchdata).subscribe((res: any) => {
     localStorage.setItem('token', res.token)
-    this.router.navigate(['/Home'])
+    this.router.navigate(['/home'])
  });
 }
   else{
