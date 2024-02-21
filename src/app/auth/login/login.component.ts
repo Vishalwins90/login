@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginInterceptor } from 'src/app/core/interceptor/login.interceptor';
 import { LoginPageService } from 'src/app/core/login-page.service';
+import { LoginService } from 'src/app/core/login.service';
 
 @Component({
 
@@ -13,17 +15,18 @@ import { LoginPageService } from 'src/app/core/login-page.service';
 export class LoginComponent {
 getdata:any=[]
 loading:any=false
-  login: FormGroup<any> = this.formbuilder.group({
+  login: FormGroup = this.formbuilder.group({
   //  email:   ['', [Validators.required, Validators.email]],
     username:['',[Validators.required]],
     password: ['',[Validators.required]],
 
   });
-  constructor(public alluserdata: LoginPageService,public router:Router,private formbuilder:FormBuilder) {
+  constructor( public notifyService :LoginService,public alluserdata: LoginPageService,public router:Router,private formbuilder:FormBuilder) {
 
   }
   ngOnInit() {
- 
+    debugger
+   
   }
 
   Submit() {
@@ -41,15 +44,15 @@ payload.forEach((element:any) => {
   let matchdata:any = payload.find((data:any)=>data.username === userdata.username && data.password === userdata.password)
 if (element && matchdata){
   this.loading=true
+  this.notifyService.showSuccess("User login Successful")
   this.alluserdata.senduserdata(matchdata).subscribe((res: any) => {
     localStorage.setItem('token', res.token)
     this.router.navigate(['/home'])
  });
 }
   else{
-    alert("user not found")
+     this.notifyService.showError("User doesn't found")
   } 
-
 });
  
   }

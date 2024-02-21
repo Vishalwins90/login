@@ -8,15 +8,19 @@ import { PagenotfoundComponent } from './feature/pagenotfound/pagenotfound.compo
 
 const routes: Routes = [
   {
+    path:'sign',
+    loadChildren:()=>import('./auth/auth.module').then(m=> m.AuthModule)
+  },
+  {
     path: 'login',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
     canActivate:[unauthguard]
   },
-  // {
-  //   path: '',
-  //   redirectTo: 'login',
-  //   pathMatch: 'full',
-  // },
+  {
+    path: '',
+    redirectTo: 'sign',
+    pathMatch: 'full',
+  },
 
 {
   path:'home',

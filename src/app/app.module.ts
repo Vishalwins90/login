@@ -11,6 +11,8 @@ import { CoreModule } from './core/core.module';
 import { AuthGuard } from './core/guard/login.guard';
 import { LoginInterceptor } from './core/interceptor/login.interceptor';
 import { unauthguard } from './core/guard/unauth.guard';
+import { ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,8 +26,8 @@ import { unauthguard } from './core/guard/unauth.guard';
     AuthModule,
     HttpClientModule,
     CoreModule,
-  
-
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
 
   ],
   providers: [

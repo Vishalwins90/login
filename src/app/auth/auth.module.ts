@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { MainRoutingModule } from './auth-routing.module';
-// import {MainRoutingModule} from 
+import { SignUpComponent } from './sign-up/sign-up.component';
+
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     CommonModule,
