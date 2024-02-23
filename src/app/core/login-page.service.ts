@@ -5,15 +5,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginPageService {
-public url='https://dummyjson.com/auth/login'
-public geturl='https://dummyjson.com/auth/me'
+  private apiUrl = 'http://localhost:3000/users';
 constructor(public http: HttpClient) {}
 
 
   senduserdata(data:any){
-return this.http.post(this.url,data)
+return this.http.post(this.apiUrl,data)
   }
   get() {
-    return this.http.get(this.geturl);
+    return this.http.get(this.apiUrl);
   }
 }

@@ -5,7 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { MainRoutingModule } from './auth-routing.module';
 import { SignUpComponent } from './sign-up/sign-up.component';
-
+import {MatTableModule} from '@angular/material/table';
+// import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -15,7 +16,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    MainRoutingModule
+    MainRoutingModule,
+    MatTableModule
+    
   ]
 })
 export class AuthModule { }

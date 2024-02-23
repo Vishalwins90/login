@@ -8,29 +8,16 @@ import { PagenotfoundComponent } from './feature/pagenotfound/pagenotfound.compo
 
 const routes: Routes = [
   {
-    path:'sign',
-    loadChildren:()=>import('./auth/auth.module').then(m=> m.AuthModule)
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-    canActivate:[unauthguard]
+    path: 'home',
+    loadChildren: () => import('./feature/feature.module').then(m => m.FeatureModule),
+    canActivate: [AuthGuard]
   },
-  {
-    path: '',
-    redirectTo: 'sign',
-    pathMatch: 'full',
-  },
-
-{
-  path:'home',
-  loadChildren: () => import('./feature/feature.module').then(m => m.FeatureModule),
- canActivate:[AuthGuard]
-},
-
-
-{ path: '**', pathMatch: 'full',  
-component: PagenotfoundComponent },
+  { path: 'login', component: LoginComponent }, // Add a route for the landing page
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
 ];
 
 @NgModule({
