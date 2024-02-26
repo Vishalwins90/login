@@ -1,23 +1,16 @@
 {
   "users": [
     {
-      "id": "3545",
-      "fullname": "Vishal",
-      "username": "Vishal@12gmail.com",
-      "password": "Vishal@123"
+      "id": "672e",
+      "fullname": "were",
+      "username": "Vishal@12",
+      "password": "Vishal@1"
     },
     {
-      "id": "5e02",
-      "fullname": "Rahul",
-      "username": "rahul@123gmail.com",
-      "password": "Rahul@123"
-    },
-    {
-      "id": "3545",
-      "fullname": "Vishal",
-      "username": "Vishal@12gmail.com",
+      "id": "55",
+      "fullname": "ram",
+      "username": "Vishal@123gmail.com",
       "password": "Vishal@123"
     }
-   
   ]
 }

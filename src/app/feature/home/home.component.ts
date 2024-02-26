@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { SignUpComponent } from 'src/app/auth/sign-up/sign-up.component';
 import { LoginPageService } from 'src/app/core/login-page.service';
+import { EditdetailsComponent } from '../editdetails/editdetails.component';
 
 @Component({
   selector: 'app-home',
@@ -7,21 +11,68 @@ import { LoginPageService } from 'src/app/core/login-page.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  id: any
+  displayedColumns: string[] = ['position', 'name', 'weight', 'actionsColumn', 'edit'];
+  alldata: any[] = [];
+  dataSource = this.alldata;
+  updatdataoneData: any = [] = []
+  constructor(public getdata: LoginPageService, public router: Router, public dialog: MatDialog) { }
 
-  alldata:any=[]
-  dataSource = this.alldata
-  constructor( public getdata:LoginPageService){
-
+  ngOnInit() {
+    this.loadData();
   }
-  ngOnInit(){
 
+  loadData() {
     this.getdata.get().subscribe(
       (data: any) => {
-        this.alldata = data
-  console.log(this.alldata)
+        this.alldata = data;
+        this.dataSource = [...this.alldata];
+        console.log('this.alldata', this.alldata);
       },
-  
+
     );
   }
+
+  delete(index: number) {
+    const dataToDelete = this.alldata[index];
+    this.getdata.delete(dataToDelete.id).subscribe(
+      () => {
+        this.alldata.splice(index, 1);
+        this.dataSource = this.alldata;
+        this.alldata = [...this.alldata]
+        console.log(dataToDelete.id);
+      },
+
+    );
+  }
+  logout() {
+    localStorage.removeItem('token')
+    this.router.navigateByUrl('/login')
+  }
+
+  edit(index: any) {
+    const updatdata = this.alldata[index];
+    this.getdata.getEmployeeById(updatdata.id).subscribe(
+      () => {
+        this.updatdataoneData = updatdata
+        console.log(this.updatdataoneData.fullname, "'SSSD")
+      },
+
+
+    );
+
+    let dialogRef = this.dialog.open(EditdetailsComponent, {
+      height: '600px',
+      width: '400px',
+      data: {
+        alluserdata: updatdata
+      },
+    });
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.loadData();
+      }
+    });
+  }
+
 }

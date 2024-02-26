@@ -18,6 +18,7 @@ import { FeatureModule } from './feature/feature.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { featureRoutingModule } from './feature/feature-routing.module';
 // import { AuthModule } from './auth/auth.module';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent
@@ -36,9 +37,13 @@ import { featureRoutingModule } from './feature/feature-routing.module';
      CoreModule,
      BrowserAnimationsModule,
      FeatureModule,
-     featureRoutingModule
+     featureRoutingModule,
+     MatDialogModule
   ],
-  providers: [],
+  providers: [
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: {  }}
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

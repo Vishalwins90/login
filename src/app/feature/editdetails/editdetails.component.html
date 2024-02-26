@@ -1,0 +1,29 @@
+<div class="login-page">
+    <div class="form">
+        <h5>Update-user</h5>
+        <form [formGroup]="sign">
+            <input formControlName="fullname" type="text" placeholder="enter your full name">
+            <span *ngIf="sign.controls['fullname'].hasError('required') && sign.controls['fullname'].touched">Enter your
+                fullname</span>
+            <input formControlName="username" type="text" placeholder="enter your username">
+            <span *ngIf="sign.controls['username'].hasError('required') && sign.controls['username'].touched">Enter your
+                username</span>
+            <span *ngIf="sign.controls['username'].hasError('email')">Please enter a valid email</span>
+            <input formControlName="password" type="text" placeholder="enter your password">
+            <span *ngIf="sign.controls['password'].hasError('required') && sign.controls['password'].touched">Enter your
+                password</span>
+            <span *ngIf="sign.controls['password'].hasError('pattern')">
+                Password must contain at least one number, one uppercase and a lowercase letter
+                and at least
+            </span>
+            <span *ngIf="sign.controls['password'].hasError('minlength')">
+                Password must be at least 6 characters long.
+            </span>
+            <span *ngIf="sign.controls['password'].hasError('maxlength')">
+                Password cannot be longer than 30 characters.</span>
+        </form>
+        <button  
+        type="button" class="btn btn-primary" (click)="update()">update</button>
+        <button  
+        type="button" class="btn btn-primary" (click)="onNoClick()">close</button>
+        </div>

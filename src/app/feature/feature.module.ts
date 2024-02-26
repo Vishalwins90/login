@@ -6,18 +6,26 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { MatTableModule } from '@angular/material/table'  
 import { MainRoutingModule } from '../auth/auth-routing.module';
 import { featureRoutingModule } from './feature-routing.module';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditdetailsComponent } from './editdetails/editdetails.component';
+import { ReactiveFormsModule } from '@angular/forms';
 featureRoutingModule
 @NgModule({
   declarations: [
     HomeComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    EditdetailsComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     MatTableModule,
     // MainRoutingModule
-    featureRoutingModule
+    featureRoutingModule,
+    MatButtonModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ]
 })
 export class FeatureModule { }

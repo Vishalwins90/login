@@ -1,6 +1,7 @@
 import { Element } from '@angular/compiler';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { LoginPageService } from 'src/app/core/login-page.service';
 import { LoginService } from 'src/app/core/login.service';
 
@@ -10,7 +11,8 @@ import { LoginService } from 'src/app/core/login.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
-  constructor(private formBulider: FormBuilder,public  senduser:LoginPageService,public pop:LoginService) {
+  constructor(private formBulider: FormBuilder,public  senduser:LoginPageService,public pop:LoginService,public dialogRef: MatDialogRef<SignUpComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,) {
 
   }
   sign: FormGroup = this.formBulider.group({

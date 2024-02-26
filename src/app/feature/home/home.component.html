@@ -1,33 +1,50 @@
-<!-- <table mat-table [dataSource]="alldata" class="mat-elevation-z8"> -->
+<div class="b" style="text-align: center; margin-right: -1115px; margin-top: 28px;">
+   <button mat-raised-button   color="primary" focusable="false" (click)="logout()">
+     <i class="fa fa-times mat-icon"></i>logout
+     </button>
+  </div>
+ <div class="heading">
+  <h1 style="text-align: center; color: red;" >UserDetails</h1>
+ </div>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <!-- <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container> -->
-  
-    <!-- Name Column -->
-    <!-- <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container> -->
-  
-    <!-- Weight Column -->
-    <!-- <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container> -->
-  
-    <!-- Symbol Column -->
-    <!-- <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+
+ <table mat-table [dataSource]="alldata" class="mat-elevation-z8"> 
+    Position Column 
+     <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> fullName. </th>
+      <td mat-cell *matCellDef="let alldata"> {{alldata.fullname}} </td>
     </ng-container>
+  
+    Name Column 
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>username</th>
+      <td mat-cell *matCellDef="let alldata"> {{alldata.username}}</td>
+    </ng-container> 
+  
+     Weight Column 
+     <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef>Password</th>
+      <td mat-cell *matCellDef="let alldata"> {{alldata.password}} </td>
+    </ng-container> 
+  
+    <ng-container matColumnDef="actionsColumn">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let alldata;  let j = index;"> 
+         <button mat-raised-button  color="accent" focusable="false" (click)="delete(j)">
+         <i class="fa fa-times mat-icon"></i> Remove
+         </button>
+      </td>
+   </ng-container>
+   <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let alldata;  let j = index;"> 
+       <button mat-raised-button  color="warn" focusable="false" (click)="edit(j)">
+       <i class="fa fa-times mat-icon"></i>Edit
+       </button>
+    </td>
+ </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table> -->
-  SDSDASDVDSZFDXCV SDSDFDFDAFDDF
+  </table> 
+  

@@ -16,8 +16,9 @@ const routes: Routes = [
     loadChildren: () => import('./feature/feature.module').then(m => m.FeatureModule),
     canActivate: [AuthGuard]
   },
-  { path: 'login', component: LoginComponent }, // Add a route for the landing page
+  { path: 'login', component: LoginComponent ,canActivate:[unauthguard] }, // Add a route for the landing page
   { path: '', pathMatch: 'full', redirectTo: 'login' },
+  // {path:'**', pathMatch:'full',component:PagenotfoundComponent}
 ];
 
 @NgModule({

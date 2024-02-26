@@ -27,7 +27,7 @@ loading:any=false
   }
   ngOnInit() {
   
-    console.log(this.payload)
+
   }
 
   Submit() {
@@ -39,7 +39,6 @@ else{
   this.alluserdata.get().subscribe(
     (data: any) => {
       this.payload = data
-
     },
 
   );
@@ -54,13 +53,13 @@ username:this.login.value.username,
 password:this.login.value.password
     }
  
-this.payload.forEach((element:any) => {
+
   let matchdata:any = this.payload.find((data:any)=>data.username === userdata.username && data.password === userdata.password)
-if (element && matchdata){
+if (this.payload && matchdata){
   this.loading=true
   this.notifyService.showSuccess("User login Successful")
   this.alluserdata.senduserdata(matchdata).subscribe((res: any) => {
-    localStorage.setItem('token', res.token)
+    localStorage.setItem('token', res.id)
     this.router.navigate(['/home'])
     this.login.reset()
  });
@@ -68,7 +67,6 @@ if (element && matchdata){
   else{
     this.notifyService.showError("User doesn't found")
   } 
-});
  
   }
 }
