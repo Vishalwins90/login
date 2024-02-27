@@ -1,6 +1,6 @@
 <div class="login-page">
     <div class="form">
-        <h5> Sign-Up</h5>
+        <h5 style="color: red;"> Sign-Up</h5>
         <form [formGroup]="sign">
             <input formControlName="fullname" type="text" placeholder="enter your full name">
             <span *ngIf="sign.controls['fullname'].hasError('required') && sign.controls['fullname'].touched">Enter your

@@ -21,7 +21,7 @@ export class EditdetailsComponent {
     private router: ActivatedRoute,
     public dialogRef: MatDialogRef<EditdetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-  ) { }
+  ) {}
  
   sign: FormGroup = this.formBulider.group({
     fullname: ['', [Validators.required]],
@@ -35,21 +35,15 @@ export class EditdetailsComponent {
         fullname: this.data.alluserdata.fullname,
        username: this.data.alluserdata.username,
      password: this.data.alluserdata.password,
-       });
+     });
   }
   
-  
-  
   update(){
-    debugger
     let id=this.data.alluserdata.id
     this.userdata.patchdata(id,this.sign.value).subscribe((data:any)=>
     console.log(data)
-     
     )
     this.dialogRef.close(true);
   }
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+
 }

@@ -26,8 +26,8 @@ export class HomeComponent {
     this.getdata.get().subscribe(
       (data: any) => {
         this.alldata = data;
-        this.dataSource = [...this.alldata];
-        console.log('this.alldata', this.alldata);
+        // this.dataSource = [...this.alldata];
+        // console.log('this.alldata', this.alldata);d
       },
 
     );
