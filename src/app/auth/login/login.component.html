@@ -7,11 +7,8 @@
                 is required</span>
             <span *ngIf="login.controls['username'].hasError('email')">Please enter a valid email</span>
           <div class="password-container">
-            <!-- <input type="password" placeholder="Enter Password" formControlName="password" [type]="hide ? 'password' : 'text'"> -->
             <input type="password" placeholder="Enter Password" formControlName="password" [type]="hide ? 'password' : 'text'">
-            <!-- <button (click)="toggleVisibility()"> -->
               <i class="fa" [ngClass]="{'fa-eye': !hide, 'fa-eye-slash': hide}" (click)="toggleVisibility()"></i>
-            <!-- </button> -->
           </div>
             <span *ngIf="login.controls['password'].hasError('required') && login.controls['password'].touched">Password
                 is required</span>
