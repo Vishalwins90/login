@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SignUpComponent } from 'src/app/auth/sign-up/sign-up.component';
 import { LoginPageService } from 'src/app/core/login-page.service';
 import { EditdetailsComponent } from '../editdetails/editdetails.component';
+import { LoginService } from 'src/app/core/login.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent {
   alldata: any[] = [];
   dataSource = this.alldata;
   updatdataoneData: any = [] = []
-  constructor(public getdata: LoginPageService, public router: Router, public dialog: MatDialog) { }
+  constructor(public getdata: LoginPageService, public router: Router, public dialog: MatDialog,public message:LoginService) { }
 
   ngOnInit() {
     this.loadData();
@@ -42,8 +43,8 @@ export class HomeComponent {
         this.alldata = [...this.alldata]
         console.log(dataToDelete.id);
       },
-
     );
+this.message.showError('User deleted Successfull')
   }
   logout() {
     localStorage.removeItem('token')
@@ -55,12 +56,9 @@ export class HomeComponent {
     this.getdata.getEmployeeById(updatdata.id).subscribe(
       () => {
         this.updatdataoneData = updatdata
-        console.log(this.updatdataoneData.fullname, "'SSSD")
+        console.log(this.updatdataoneData.fullname)
       },
-
-
     );
-
     let dialogRef = this.dialog.open(EditdetailsComponent, {
       height: '600px',
       width: '400px',
@@ -72,7 +70,9 @@ export class HomeComponent {
       if (result) {
         this.loadData();
       }
+      this.message.showSuccess("your Data is updated Successful")
     });
+
   }
 
 }

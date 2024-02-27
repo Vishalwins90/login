@@ -11,7 +11,7 @@ import { LoginPageService } from 'src/app/core/login-page.service';
 })
 export class EditdetailsComponent {
   id: any;
-  employee:any=[]
+  employee:any = []
 
 
   constructor( 
@@ -39,7 +39,7 @@ export class EditdetailsComponent {
   }
   
   update(){
-    let id=this.data.alluserdata.id
+    let id = this.data.alluserdata.id
     this.userdata.patchdata(id,this.sign.value).subscribe((data:any)=>
     console.log(data)
     )

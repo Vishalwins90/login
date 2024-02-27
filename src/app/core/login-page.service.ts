@@ -12,7 +12,6 @@ export class LoginPageService {
   baseURL: any;
 constructor(public http: HttpClient) {}
 
-
   senduserdata(data:any){
 return this.http.post(this.apiUrl,data)
   }
