@@ -17,6 +17,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { FeatureModule } from './feature/feature.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { featureRoutingModule } from './feature/feature-routing.module';
+
 // import { AuthModule } from './auth/auth.module';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 @NgModule({

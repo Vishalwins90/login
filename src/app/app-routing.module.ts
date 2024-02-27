@@ -5,6 +5,7 @@ import { AuthGuard } from './core/guard/login.guard';
 // import { unauthguard } from './core/interceptor/unauth.guard';
 import { unauthguard } from './core/guard/unauth.guard';
 import { PagenotfoundComponent } from './feature/pagenotfound/pagenotfound.component';
+import { resetguard } from './core/guard/reset.guard';
 
 const routes: Routes = [
   {
@@ -19,8 +20,9 @@ const routes: Routes = [
    {
     path: 'reset/:id',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-    canActivate:[AuthGuard]
-    // canActivate: [unauthguard]
+   canActivate:[AuthGuard]
+    // canActivate:[resetguard]
+ 
     
   },
  
