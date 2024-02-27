@@ -19,7 +19,7 @@ export class resetguard implements CanActivate {
     debugger
     let token=localStorage.getItem('token')
   if(token){
-     this.router.navigate(['./reset'])
+     this.router.navigate(['reset'])
     return false
   }
   

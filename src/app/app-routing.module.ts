@@ -20,7 +20,7 @@ const routes: Routes = [
    {
     path: 'reset/:id',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-   canActivate:[AuthGuard]
+   
     // canActivate:[resetguard]
  
     
