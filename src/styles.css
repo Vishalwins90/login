@@ -9,3 +9,10 @@
  /* @import './app-theme.css'; */
  @import "~@angular/material/prebuilt-themes/indigo-pink.css";
  
+ .fa{
+    cursor: pointer ;
+    position: relative ;
+    top: -55px ;
+    left: 91px ;
+    border: none;
+}

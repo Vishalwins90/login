@@ -22,14 +22,12 @@ export class SignUpComponent {
 })
 
   ngOnInit() {
-debugger
   }
 Submit(){
   if(this.sign.invalid){
     this.sign.markAllAsTouched();
   }
   else{
- 
     this.pop.showSuccess("Your account is created")
 this.senduser.senduserdata(this.sign.value).subscribe((Element:any)=>
 console.log(Element)

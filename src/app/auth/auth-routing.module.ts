@@ -5,6 +5,8 @@ import { AuthGuard } from '../core/guard/login.guard';
 // import { unauthguard } from '../core/interceptor/unauth.guard';
 import { unauthguard } from '../core/guard/unauth.guard';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 // const routes: Routes = [
 //   { path: 'register', pathMatch: 'full', component: SignUpComponent,    canActivate: [unauthguard] },
@@ -12,7 +14,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 //  ];
  const routes: Routes = [
   { path: 'login', component: LoginComponent,canActivate: [unauthguard]  },
-  { path: 'signup', component: SignUpComponent,canActivate: [unauthguard]  }
+  { path: 'signup', component: SignUpComponent,canActivate: [unauthguard]  },
+  { path: 'forgot',component:ForgotPasswordComponent},
+  {path:'',component:ResetPasswordComponent}
 ];
 
 

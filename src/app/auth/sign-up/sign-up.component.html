@@ -2,14 +2,14 @@
     <div class="form">
         <h5 style="color: red;"> Sign-Up</h5>
         <form [formGroup]="sign">
-            <input formControlName="fullname" type="text" placeholder="enter your full name">
+            <input formControlName="fullname" type="text" placeholder="Enter your full name">
             <span *ngIf="sign.controls['fullname'].hasError('required') && sign.controls['fullname'].touched">Enter your
                 fullname</span>
-            <input formControlName="username" type="text" placeholder="enter your username">
+            <input formControlName="username" type="text" placeholder="Enter your username">
             <span *ngIf="sign.controls['username'].hasError('required') && sign.controls['username'].touched">Enter your
-                username</span>
+                email</span>
             <span *ngIf="sign.controls['username'].hasError('email')">Please enter a valid email</span>
-            <input formControlName="password" type="text" placeholder="enter your password">
+            <input formControlName="password" type="text" placeholder="Enter your password">
             <span *ngIf="sign.controls['password'].hasError('required') && sign.controls['password'].touched">Enter your
                 password</span>
             <span *ngIf="sign.controls['password'].hasError('pattern')">
@@ -25,6 +25,5 @@
         <button  
         type="button" class="btn btn-primary" (click)="Submit()">Submit</button>
         <div class="text">
-            <h6>Already have an account?<a href="./login">Login now</a></h6>
-            </div>
+            <h6>Already have an account?<a href="./login">Login now</a></h6> </div>
 </div>
