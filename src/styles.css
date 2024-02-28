@@ -16,3 +16,9 @@
     left: 91px ;
     border: none;
 }
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    border-radius: var(--mdc-dialog-container-shape, 4px);
+    overflow-x: hidden;
+    overflow-y: hidden;
+}

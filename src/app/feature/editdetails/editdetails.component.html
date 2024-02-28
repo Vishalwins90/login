@@ -1,6 +1,10 @@
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+
 <div class="login-page">
     <div class="form">
-        <h5>Update-user</h5>
+        <h5>Add-User</h5>
         <form [formGroup]="sign">
             <input formControlName="fullname" type="text" placeholder="enter your full name">
             <span *ngIf="sign.controls['fullname'].hasError('required') && sign.controls['fullname'].touched">Enter your
@@ -23,6 +27,6 @@
                 Password cannot be longer than 30 characters.</span>
         </form>
         <button  
-        type="button" class="btn btn-primary" (click)="update()">update</button>
+        type="button" class="btn btn-primary" (click)="Submit()">Submit</button>
        
         </div>

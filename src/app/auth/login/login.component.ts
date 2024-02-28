@@ -48,7 +48,7 @@ export class LoginComponent {
         let matchdata: any = this.payload.find((data: any) => data.username === userdata.username && data.password === userdata.password);
         if (matchdata) {
           this.notifyService.showSuccess("User login Successful");
-          localStorage.setItem('token', matchdata.id);
+          sessionStorage.setItem('token', matchdata.id);
           this.router.navigate(['/home']);
           this.login.reset();
         } else {

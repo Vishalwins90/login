@@ -31,19 +31,35 @@ export class EditdetailsComponent {
 
 
   ngOnInit() {
-      this.sign.patchValue({
-        fullname: this.data.alluserdata.fullname,
-       username: this.data.alluserdata.username,
-     password: this.data.alluserdata.password,
-     });
+    //   this.sign.patchValue({
+    //     fullname: this.data.alluserdata.fullname,
+    //    username: this.data.alluserdata.username,
+    //  password: this.data.alluserdata.password,
+    //  });
   }
   
-  update(){
-    let id = this.data.alluserdata.id
-    this.userdata.patchdata(id,this.sign.value).subscribe((data:any)=>
-    console.log(data)
-    )
-    this.dialogRef.close(true);
-  }
+  Submit(){
 
+    if(this.sign.invalid){
+      this.sign.markAllAsTouched();
+    }
+    else{
+      // this.pop.showSuccess("Your account is created")
+  this.userdata.senduserdata(this.sign.value).subscribe((Element:any)=>
+  console.log(Element)
+  )
+  this.dialogRef.close(true);
+  this.sign.reset()
+    }
+  //   let id = this.data.alluserdata.id
+  //   this.userdata.patchdata(id,this.sign.value).subscribe((data:any)=>
+  //   console.log(data)
+  //   )
+  //  
+  // }
+
+
+
+
+}
 }

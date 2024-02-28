@@ -10,6 +10,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditdetailsComponent } from './editdetails/editdetails.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 featureRoutingModule
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ featureRoutingModule
     featureRoutingModule,
     MatButtonModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule,
+    FormsModule
   ]
 })
 export class FeatureModule { }

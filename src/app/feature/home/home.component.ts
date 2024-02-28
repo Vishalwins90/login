@@ -5,6 +5,8 @@ import { SignUpComponent } from 'src/app/auth/sign-up/sign-up.component';
 import { LoginPageService } from 'src/app/core/login-page.service';
 import { EditdetailsComponent } from '../editdetails/editdetails.component';
 import { LoginService } from 'src/app/core/login.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Action } from 'rxjs/internal/scheduler/Action';
 
 @Component({
   selector: 'app-home',
@@ -13,10 +15,13 @@ import { LoginService } from 'src/app/core/login.service';
 })
 export class HomeComponent {
   id: any
-  displayedColumns: string[] = ['position', 'name', 'weight', 'actionsColumn', 'edit'];
+  inlineForm: any
+  displayedColumns: string[] = ['fullname', 'username', 'password', 'Action',]
   alldata: any[] = [];
   dataSource = this.alldata;
   updatdataoneData: any = [] = []
+  editingIndex: number = -1; // Index of the row currently being edited
+  editedData: any = {};
   constructor(public getdata: LoginPageService, public router: Router, public dialog: MatDialog,public message:LoginService) { }
 
   ngOnInit() {
@@ -27,11 +32,13 @@ export class HomeComponent {
     this.getdata.get().subscribe(
       (data: any) => {
         this.alldata = data;
-        // this.dataSource = [...this.alldata];
-        // console.log('this.alldata', this.alldata);d
+         this.dataSource = [...this.alldata];
+       console.log('this.alldata', this.alldata)
       },
-
+  
     );
+  
+
   }
 
   delete(index: number) {
@@ -44,35 +51,49 @@ export class HomeComponent {
         console.log(dataToDelete.id);
       },
     );
-this.message.showError('User deleted Successfull')
+this.message.showSuccess('User deleted Successfull')
   }
   logout() {
     localStorage.removeItem('token')
     this.router.navigateByUrl('/login')
   }
 
-  edit(index: any) {
-    const updatdata = this.alldata[index];
-    this.getdata.getEmployeeById(updatdata.id).subscribe(
-      () => {
-        this.updatdataoneData = updatdata
-        console.log(this.updatdataoneData.fullname)
-      },
-    );
-    let dialogRef = this.dialog.open(EditdetailsComponent, {
-      height: '600px',
-      width: '400px',
-      data: {
-        alluserdata: updatdata
-      },
-    });
-    dialogRef.afterClosed().subscribe((result: any) => {
-      if (result) {
-        this.loadData();
-      }
-      this.message.showSuccess("your Data is updated Successful")
-    });
-
+  edit(index:any) {
+ debugger
+    if (this.editingIndex === index) {
+      this.editingIndex = -1; 
+    } else {
+      this.editingIndex = index; 
+      this.editedData = { ...this.alldata[index] };
+    }
   }
+
+addnewuser(){
+  let dialogRef = this.dialog.open(EditdetailsComponent, {
+    height: '600px',
+    width: '400px',
+    panelClass:'icon-outside',
+
+  });
+  dialogRef.afterClosed().subscribe((result: any) => {
+    if (result) {
+      this.loadData();
+      this.message.showSuccess("your Data is updated Successful")
+    }
+
+  });
+}
+
+
+saveEdit(index: number) {
+  this.alldata[index] = {...this.editedData};
+  this.editingIndex = -1;
+  this.getdata.patchdata(this.alldata[index].id, this.editedData).subscribe((data: any) => {
+    console.log(data);
+
+  });
+}
+
+
 
 }

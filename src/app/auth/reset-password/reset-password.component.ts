@@ -28,10 +28,10 @@ export class ResetPasswordComponent {
         console.log(data)
       );
       this.reset.reset()
-      this.message.showSuccess(" Password Reset Succesfull")
+      this.message.showSuccess("Password Reset Succesfull")
     }
   
-    // localStorage.setItem('token', id)
+
    
   }
 
@@ -64,7 +64,7 @@ export class ResetPasswordComponent {
     return password === confirmPassword ? null : { mismatch: true };
   }
   logout(){
-    localStorage.removeItem('token')
+  sessionStorage.removeItem('token')
   }
   
   toggleVisibility(): void {
