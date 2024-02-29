@@ -32,7 +32,7 @@
   margin-left: 104px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form input {
+/* .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
@@ -42,7 +42,7 @@
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
-}
+} */
 
 .form .message {
   margin: 15px 0 0;
@@ -150,6 +150,12 @@ span{
   right:-52px;
 }
 
-::ng-deep .icon-outside .mat-dialog-container {
- overflow: unset
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 2px;
+  padding-bottom: 16px;
+}
+
+.mat-mdc-text-field-wrapper {
+  height: 30px;
 }

@@ -12,7 +12,7 @@ import { LoginPageService } from 'src/app/core/login-page.service';
 export class EditdetailsComponent {
   id: any;
   employee:any = []
-
+sign:any
 
   constructor( 
     public formBulider:FormBuilder,
@@ -22,25 +22,21 @@ export class EditdetailsComponent {
     public dialogRef: MatDialogRef<EditdetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
- 
-  sign: FormGroup = this.formBulider.group({
-    fullname: ['', [Validators.required]],
-    username: ['', [Validators.required,Validators.email]],
-    password:['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{4,}'),Validators.minLength(6), Validators.maxLength(20)]]
-})
+
 
 
   ngOnInit() {
-    //   this.sign.patchValue({
-    //     fullname: this.data.alluserdata.fullname,
-    //    username: this.data.alluserdata.username,
-    //  password: this.data.alluserdata.password,
-    //  });
+    this.sign = this.formBulider.group({
+      fullname: ['', [Validators.required]],
+      username: ['', [Validators.required,Validators.email]],
+      password:['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{4,}'),Validators.minLength(6), Validators.maxLength(20)]]
+  })
   }
   
   Submit(){
 
     if(this.sign.invalid){
+      debugger
       this.sign.markAllAsTouched();
     }
     else{
@@ -51,12 +47,7 @@ export class EditdetailsComponent {
   this.dialogRef.close(true);
   this.sign.reset()
     }
-  //   let id = this.data.alluserdata.id
-  //   this.userdata.patchdata(id,this.sign.value).subscribe((data:any)=>
-  //   console.log(data)
-  //   )
-  //  
-  // }
+ 
 
 
 

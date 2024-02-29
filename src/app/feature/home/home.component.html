@@ -14,7 +14,6 @@
       <h1 style="text-align: center; color: red;">User-Details</h1>
     </div>
     <table mat-table [dataSource]="alldata" class="mat-elevation-z8">
-      <!-- Define your columns here -->
       <ng-container *ngFor="let column of displayedColumns">
         <ng-container [matColumnDef]="column">
           <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
@@ -29,20 +28,20 @@
                   </button> 
             </ng-container>
             <ng-template #editMode>
-              <mat-form-field *ngIf="column!=='action'" class="example-full-width">
-                <input  matInput   type="text" [(ngModel)]="editedData[column]" />
-              </mat-form-field>
-              <button  mat-raised-button *ngIf="column=='action'" color="primary"  (click)="saveEdit(i)">
-                <i class="fa fa-times mat-icon"></i>save 
-              </button>
+              <div class="div" style="font-size: 12px">
+                <mat-form-field appearance="outline" *ngIf="column!=='action'" class="example-full-width">
+                  <input    matInput   type="text" [(ngModel)]="editedData[column]" />
+                </mat-form-field>
+              </div>
               <button  mat-raised-button *ngIf="column=='action'" color="warn"  (click)="cancel(i)">
-                <i class="fa fa-times mat-icon"></i>cancel 
+                <i class="fa fa-times mat-icon"></i>Cancel 
+              </button>
+              <button  mat-raised-button *ngIf="column=='action'" color="primary"  (click)="saveEdit(i)">
+                <i class="fa fa-times mat-icon"></i>Save 
               </button>
             </ng-template>
-           
           </td>
         </ng-container>
-        
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

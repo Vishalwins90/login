@@ -18,7 +18,8 @@ export class HomeComponent {
   alldata: any;
   // dataSource = this.alldata;
   updatdataoneData: any = [] = []
-  editingIndex: number = -1; 
+  // editingIndex: number = -1; 
+  editingIndex: any; 
   editedData: any = {};
   constructor(public getdata: LoginPageService, public router: Router, public dialog: MatDialog,public message:LoginService) { }
   ngOnInit() {
@@ -50,14 +51,14 @@ export class HomeComponent {
 this.message.showSuccess('User deleted Successfull')
   }
   logout() {
-    localStorage.removeItem('token')
+    sessionStorage.removeItem('token')
     this.router.navigateByUrl('/login')
   }
 
   edit(index:any) {
     debugger
     if (this.editingIndex === index) {
-      this.editingIndex = -1; 
+      // this.editingIndex = -1; 
     } else {
       this.editingIndex = index; 
       this.editedData = { ...this.alldata.data[index] };
