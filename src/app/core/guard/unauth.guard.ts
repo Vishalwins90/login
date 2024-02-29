@@ -12,7 +12,7 @@ export const loginGuard: CanActivateFn = (route, state) => {
 export class unauthguard implements CanActivate {
 
   constructor(private router: Router) {
-    debugger
+
    }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree   {
     let token=localStorage.getItem('token')

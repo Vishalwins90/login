@@ -17,24 +17,29 @@
       <!-- Define your columns here -->
       <ng-container *ngFor="let column of displayedColumns">
         <ng-container [matColumnDef]="column">
-          <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+          <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
           <td mat-cell *matCellDef="let alldata; let i = index">
-            <ng-container *ngIf="editingIndex !== i; else editMode">
+            <ng-container *ngIf="editingIndex !== i; else editMode;">
               {{ alldata[column] }}
-              <button *ngIf="column=='Action'" mat-raised-button   color="warn" focusable="false" (click)="edit(i)">
+              <button *ngIf="column=='action'" mat-raised-button   color="warn" focusable="false" (click)="edit(i)">
                <i class="fa fa-times mat-icon"></i>Edit
                </button> 
-               <button *ngIf="column=='Action'" mat-raised-button   color="primary" focusable="false" (click)="delete(i)">
-                  <i class="fa fa-times mat-icon"></i>Remove
+               <button *ngIf="column=='action'" mat-raised-button   color="primary" focusable="false" (click)="delete(i)">
+                  <i class="fa fa-times mat-icon"></i>Delete
                   </button> 
             </ng-container>
             <ng-template #editMode>
-              <input type="text" [(ngModel)]="editedData[column]" />
-              <button  mat-raised-button *ngIf="column=='Action'" color="primary"  (click)="saveEdit(i)">
+              <mat-form-field *ngIf="column!=='action'" class="example-full-width">
+                <input  matInput   type="text" [(ngModel)]="editedData[column]" />
+              </mat-form-field>
+              <button  mat-raised-button *ngIf="column=='action'" color="primary"  (click)="saveEdit(i)">
                 <i class="fa fa-times mat-icon"></i>save 
               </button>
-              
+              <button  mat-raised-button *ngIf="column=='action'" color="warn"  (click)="cancel(i)">
+                <i class="fa fa-times mat-icon"></i>cancel 
+              </button>
             </ng-template>
+           
           </td>
         </ng-container>
         

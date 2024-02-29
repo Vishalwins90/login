@@ -100,6 +100,7 @@ body {
 
 span{
   color: #EF3B3A;
+  font-size: 12px;
 }
   
 
@@ -116,6 +117,32 @@ span{
 /* .close-icon:hover {
   transform: rotate(180deg);
 } */
+
+::ng-deep .icon-outside .close-button{
+  float: right;
+  top:-52px;
+  right:-52px;
+}
+
+::ng-deep .icon-outside .mat-dialog-container {
+ overflow: unset
+}
+
+
+/* kdmskld */
+.close-button{
+  float: right;
+  top:-24px;
+  right:-24px;
+}
+
+.close-icon {
+  transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+  transform: rotate(180deg);
+}
 
 ::ng-deep .icon-outside .close-button{
   float: right;

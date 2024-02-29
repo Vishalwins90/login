@@ -35,6 +35,7 @@ export class LoginComponent {
   }
 
   Submit() {
+    debugger
   if (this.login.invalid) {
     this.login.markAllAsTouched();
   } else {

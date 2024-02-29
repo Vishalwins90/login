@@ -18,7 +18,7 @@ export class ForgotPasswordComponent {
 
   }
   forgotPassword() {
-debugger
+
     let alluseremail: any = {
       username: this.forgot.value.username,
     }

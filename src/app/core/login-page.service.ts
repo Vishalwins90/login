@@ -28,7 +28,7 @@ return this.http.post(this.apiUrl,data)
   }
   
   patchdata(id:any,data:any){
-    debugger
+
     console.log(data)
     return this.http.patch(this.apiUrl+"/"+id, data);
 }

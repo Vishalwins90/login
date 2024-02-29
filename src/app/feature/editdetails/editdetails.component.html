@@ -1,9 +1,16 @@
-<button mat-icon-button class="close-button" [mat-dialog-close]="true">
-    <mat-icon class="close-icon" color="warn">close</mat-icon>
-  </button>
 
+  <!-- <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button> -->
+  <mat-dialog-actions style="margin-left: 330px;">
+  <!-- <button mat-button> -->
+    <mat-icon  mat-dialog-close>close</mat-icon>
+<!-- </button> -->
+</mat-dialog-actions>
 <div class="login-page">
-    <div class="form">
+
+    <div class="form" style="margin-top: -25px;
+    top: -12px;margin-left: -117px;">
         <h5>Add-User</h5>
         <form [formGroup]="sign">
             <input formControlName="fullname" type="text" placeholder="enter your full name">
@@ -28,5 +35,4 @@
         </form>
         <button  
         type="button" class="btn btn-primary" (click)="Submit()">Submit</button>
-       
         </div>
