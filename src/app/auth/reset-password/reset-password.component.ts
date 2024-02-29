@@ -11,8 +11,8 @@ import { LoginService } from 'src/app/core/login.service';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent {
-  reset: any;
-  hide = true;
+reset: any;
+hide = true;
  data=true
   constructor(private formBuilder: FormBuilder, public router: Router, private route: ActivatedRoute, public alldata: LoginPageService,public message:LoginService) { }
 

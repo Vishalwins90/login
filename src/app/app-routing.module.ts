@@ -20,15 +20,10 @@ const routes: Routes = [
    {
     path: 'reset/:id',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-   
-    // canActivate:[resetguard]
- 
-    
   },
  
   { path: 'login', component: LoginComponent ,canActivate:[unauthguard] }, 
   { path: '', pathMatch: 'full', redirectTo: 'login' },
-  // {path:'**', pathMatch:'full',component:PagenotfoundComponent}
 ];
 
 @NgModule({
