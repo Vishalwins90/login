@@ -1,15 +1,34 @@
 
- <div class="b" style="text-align: center; margin-right: -1115px; margin-top: 28px;">
+ <!-- <div class="b" style="text-align: center; margin-right: -1115px; margin-top: 28px;">
       <button mat-raised-button   color="primary" focusable="false" (click)="logout()">
         <i class="fa fa-times mat-icon"></i>Logout
         </button>
-     </div>
-  <div class="button1" style="margin-left: 62px;
-  margin-top: -35px;">
-   <button  mat-raised-button color="warn" focusable="false" (click)="addnewuser()">
-     <i class="fa fa-times mat-icon"></i>Add-user
-     </button>
-  </div>
+     </div> -->
+     <mat-toolbar>
+      <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"> -->
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" class="example-icon favorite-icon">
+          <button (click)="resetPassword()" mat-menu-item>
+            <mat-icon>password</mat-icon>
+            <span>Reset Password</span>
+          </button>
+        
+        </mat-menu>
+   
+      <span>Dashboard</span>
+   
+      <span class="example-spacer"></span>
+      <button (click)="logout()" style='margin-right:16px' class="btn btn-primary" >
+        <mat-icon aria-hidden="false">login</mat-icon>
+      </button>
+
+      <button style='margin-right:16px' (click)="addnewuser()" mat-raised-button  class="example-icon favorite-icon" color="warn">
+  <i class="fa fa-times mat-icon"></i>Add-user
+      </button>
+    </mat-toolbar>
+
    <div class="heading">
       <h1 style="text-align: center; color: red;">User-Details</h1>
     </div>
@@ -20,23 +39,23 @@
           <td mat-cell *matCellDef="let alldata; let i = index">
             <ng-container *ngIf="editingIndex !== i; else editMode;">
               {{ alldata[column] }}
-              <button *ngIf="column=='action'" mat-raised-button   color="warn" focusable="false" (click)="edit(i)">
+              <button  style='margin-right:16px' *ngIf="column=='action'" mat-raised-button   color="warn" focusable="false" (click)="edit(i)">
                <i class="fa fa-times mat-icon"></i>Edit
                </button> 
-               <button *ngIf="column=='action'" mat-raised-button   color="primary" focusable="false" (click)="delete(i)">
+               <button style='margin-right:16px' *ngIf="column=='action'" mat-raised-button   color="primary" focusable="false" (click)="delete(i)">
                   <i class="fa fa-times mat-icon"></i>Delete
                   </button> 
             </ng-container>
             <ng-template #editMode>
-              <div class="div" style="font-size: 12px">
+             
                 <mat-form-field appearance="outline" *ngIf="column!=='action'" class="example-full-width">
                   <input    matInput   type="text" [(ngModel)]="editedData[column]" />
                 </mat-form-field>
-              </div>
-              <button  mat-raised-button *ngIf="column=='action'" color="warn"  (click)="cancel(i)">
+              
+              <button style='margin-right:16px' mat-raised-button *ngIf="column=='action'" color="warn"  (click)="cancel(i)">
                 <i class="fa fa-times mat-icon"></i>Cancel 
               </button>
-              <button  mat-raised-button *ngIf="column=='action'" color="primary"  (click)="saveEdit(i)">
+              <button style='margin-right:16px' mat-raised-button *ngIf="column=='action'" color="primary"  (click)="saveEdit(i)">
                 <i class="fa fa-times mat-icon"></i>Save 
               </button>
             </ng-template>

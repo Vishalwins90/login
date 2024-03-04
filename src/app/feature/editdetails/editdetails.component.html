@@ -1,14 +1,14 @@
 
-<div class="close">
+<div class="close" (click)="$event.stopPropagation()">
     <mat-dialog-actions style="margin-left: 330px;">
         <mat-icon  mat-dialog-close>close</mat-icon>
     </mat-dialog-actions>
 </div>
-<div class="login-page">
-    <div class="form" style="margin-top: -25px;
+<div  class="login-page">
+    <div (click)="$event.stopPropagation()" class="form" style="margin-top: -25px;
     top: -12px;margin-left: -117px;">
         <h5>Add-User</h5>
-        <form [formGroup]="sign">
+        <form (click)="$event.stopPropagation()" [formGroup]="sign">
             <input formControlName="fullname" type="text" placeholder="enter your full name">
             <span *ngIf="sign.controls['fullname'].hasError('required') && sign.controls['fullname'].touched">Enter your
                 fullname</span>

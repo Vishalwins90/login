@@ -10,8 +10,8 @@ import { LoginPageService } from 'src/app/core/login-page.service';
   styleUrls: ['./editdetails.component.css']
 })
 export class EditdetailsComponent {
-  id: any;
-  employee:any = []
+id: any;
+// employee:any = []
 sign:any
 
   constructor( 
@@ -47,10 +47,5 @@ sign:any
   this.dialogRef.close(true);
   this.sign.reset()
     }
- 
-
-
-
-
 }
 }

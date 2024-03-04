@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginPageService } from 'src/app/core/login-page.service';
 import { LoginService } from 'src/app/core/login.service';
@@ -13,18 +14,22 @@ import { LoginService } from 'src/app/core/login.service';
 export class ResetPasswordComponent {
 reset: any;
 hide = true;
- data=true
-  constructor(private formBuilder: FormBuilder, public router: Router, private route: ActivatedRoute, public alldata: LoginPageService,public message:LoginService) { }
+ hidedata=true
+  constructor(private formBuilder: FormBuilder, public router: Router, private route: ActivatedRoute, public alldata: LoginPageService,public message:LoginService, public dialogRef: MatDialogRef<ResetPasswordComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,) { }
 
   resetPassword() {
+    debugger
     if (this.reset.invalid) {
       this.reset.markAllAsTouched()
     }
     else {
-
       let id = this.route.snapshot.paramMap.get('id');
+      console.log(id)
+          let data:any={
+          oldPassword: this.reset.value.oldPassword,
+        }
       this.alldata.patchdata(id, this.reset.value).subscribe((data: any) =>
-   
         console.log(data)
       );
       this.reset.reset()
@@ -36,7 +41,9 @@ hide = true;
   }
 
   ngOnInit() {
+
     this.reset = this.formBuilder.group({
+    
       password: [
         '',
         [
@@ -55,12 +62,13 @@ hide = true;
     }, 
     {
       validator: this.passwordMatchValidator
+      
     })
+ 
   }
-  passwordMatchValidator(group: any) {debugger
+  passwordMatchValidator(group: any) {
     const password = group.get('password').value;
     const confirmPassword = group.get('confirmPassword').value;
-  
     return password === confirmPassword ? null : { mismatch: true };
   }
   logout(){
@@ -71,7 +79,7 @@ hide = true;
     this.hide = !this.hide;
   }
   nextbutton(): void {
-    this.data = !this.data;
+    this.hidedata = !this.hidedata;
   }
 
 }

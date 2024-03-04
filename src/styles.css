@@ -32,3 +32,7 @@
 .mat-mdc-text-field-wrapper {
     height: 30px;
 }
+
+body{
+    overflow: hidden;
+}

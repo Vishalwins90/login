@@ -28,7 +28,6 @@ export class ForgotPasswordComponent {
         let matchdata: any = this.logindata.find((data: any) => data.username === alluseremail.username);
         if (matchdata) {
           this.router.navigate([`reset/${matchdata.id}`]);
-          localStorage.setItem('token', matchdata.id)
           this.message.showSuccess("User found succesfulll")
           this.forgot.reset();
         } else {

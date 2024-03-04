@@ -14,13 +14,16 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-
+import { UserResetPasswordComponent } from './user-reset-password/user-reset-password.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     LoginComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    UserResetPasswordComponent
     
   ],
   imports: [
@@ -32,7 +35,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule,
+    MatDialogModule
     
   ]
 })

@@ -32,4 +32,9 @@ return this.http.post(this.apiUrl,data)
     console.log(data)
     return this.http.patch(this.apiUrl+"/"+id, data);
 }
+
+getdatabyId(id: any) {
+  return this.http.get(this.apiUrl + "/" + id);
+}
+
 }

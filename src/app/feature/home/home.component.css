@@ -12,7 +12,7 @@
     /* transform: rotate(180deg); */
   /* } */ */
   
-  ::ng-deep .icon-outside .close-button{
+  /* ::ng-deep .icon-outside .close-button{
     float: right;
     top:-52px;
     right:-52px;
@@ -20,20 +20,14 @@
   
   ::ng-deep .icon-outside .mat-dialog-container {
    overflow: unset
-  }
-
-  /* mat-mdc-form-field-flex ng-tns-c1205077789-6{
-    margin: -5px;
   } */
 
-  input.mat-input-element {
-    height:105px
-  }
 
-  ::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
-::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
-
-::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-    transform: translateY(-1.1em) scale(.75);
-    width: 133.33333%;
+  .mdc-text-field--outlined .mdc-notched-outline {
+    height: 43px;
+    z-index: 1;
 }
+
+.example-spacer {
+    flex: 1 1 auto;
+  }

@@ -50,6 +50,7 @@ export class LoginComponent {
         if (matchdata) {
           this.notifyService.showSuccess("User login Successful");
           sessionStorage.setItem('token', matchdata.id);
+          sessionStorage.setItem('oldpassword',matchdata.password)
           this.router.navigate(['/home']);
           this.login.reset();
         } else {

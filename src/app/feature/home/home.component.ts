@@ -5,6 +5,8 @@ import { LoginPageService } from 'src/app/core/login-page.service';
 import { LoginService } from 'src/app/core/login.service';
 import { EditdetailsComponent } from '../editdetails/editdetails.component';
 import { MatTableDataSource } from '@angular/material/table';
+import { ResetPasswordComponent } from 'src/app/auth/reset-password/reset-password.component';
+import { UserResetPasswordComponent } from 'src/app/auth/user-reset-password/user-reset-password.component';
 
 @Component({
   selector: 'app-home',
@@ -75,7 +77,7 @@ addnewuser(){
   dialogRef.afterClosed().subscribe((result: any) => {
     if (result) {
       this.loadData();
-      this.message.showSuccess("New user Add Successfull")
+     this.message.showSuccess("New user Add Successfull")
     }
 
   });
@@ -98,4 +100,21 @@ cancel(index:any){
   this.alldata.data[index] = { ...this.editedData };
   this.editingIndex = -1;
 }
+
+resetPassword(){
+  let dialogRef = this.dialog.open(UserResetPasswordComponent, {
+    width: '408px',
+    height: '435px',
+    panelClass:'icon-outside',
+
+  });
+  dialogRef.afterClosed().subscribe((result: any) => {
+    if (result) {
+      this.loadData();
+      // this.message.showSuccess("New user Add Successfull")
+    }
+
+  });
 }
+}
+

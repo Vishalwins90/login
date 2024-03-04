@@ -13,12 +13,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon'
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+
 featureRoutingModule
 @NgModule({
   declarations: [
     HomeComponent,
     PagenotfoundComponent,
-    EditdetailsComponent
+    EditdetailsComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +36,9 @@ featureRoutingModule
     ReactiveFormsModule,
     MatIconModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatMenuModule,
+    MatToolbarModule
   ]
 })
 export class FeatureModule { }
