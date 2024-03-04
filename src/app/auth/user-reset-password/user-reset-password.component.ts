@@ -24,7 +24,6 @@ userDatapassword:any=[]
     
       let token=sessionStorage.getItem('token')
       this.alldata.getdatabyId(token).subscribe((data:any)=> 
-      // this.userData.push(data)
       this.userDatapassword.push(data.password)
    
       )
@@ -60,7 +59,7 @@ userDatapassword:any=[]
     }
     logout(){
     sessionStorage.removeItem('token')
-    sessionStorage.removeItem('oldpassword')
+    sessionStorage.removeItem('username')
     }
     
     toggleVisibility(): void {
@@ -73,7 +72,7 @@ userDatapassword:any=[]
       this.hide2 = !this.hide2;
     }
     resetPassword() {
-debugger
+
       if (this.reset.invalid) {
         this.reset.markAllAsTouched()
       }
@@ -91,14 +90,12 @@ debugger
           password:this.reset.value.password
         }
         if(this.userDatapassword==password.oldPassword){
-        debugger
+    
           let token=sessionStorage.getItem('token')
           this.alldata.patchdata(token ,data).subscribe((data: any) =>
           console.log(data,"dfsdfds")
           );
-          
          this.dialogRef.close(true);
-
           this.reset.reset()
           this.message.showSuccess("Password Reset Succesfull")
         }

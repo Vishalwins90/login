@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { AdminComponent } from './admin/admin.component';
 
 featureRoutingModule
 @NgModule({
@@ -23,7 +24,8 @@ featureRoutingModule
     HomeComponent,
     PagenotfoundComponent,
     EditdetailsComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    AdminComponent
   ],
   imports: [
     CommonModule,

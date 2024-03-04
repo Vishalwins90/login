@@ -36,7 +36,7 @@ sign:any
   Submit(){
 
     if(this.sign.invalid){
-      debugger
+    
       this.sign.markAllAsTouched();
     }
     else{

@@ -16,7 +16,7 @@ export class resetguard implements CanActivate {
    }
    
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree   {
-    debugger
+
     let token=localStorage.getItem('token')
   if(token){
      this.router.navigate(['reset'])

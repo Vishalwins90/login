@@ -16,14 +16,20 @@ export class SignUpComponent {
 
   }
   sign: FormGroup = this.formBulider.group({
-    fullname: ['', [Validators.required]],
+    fullname: ['',[Validators.required]],
     username: ['', [Validators.required,Validators.email]],
-    password:['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{4,}'),Validators.minLength(6), Validators.maxLength(20)]]
+    password:['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{4,}'),Validators.minLength(6), Validators.maxLength(20)]],
+    Phonenumber:['',[Validators.required,Validators.maxLength(10)]]
 })
 
   ngOnInit() {
   }
 Submit(){
+let Signupdata:any={
+  fullname:this.sign.value.fullname
+  
+}
+
   if(this.sign.invalid){
     this.sign.markAllAsTouched();
   }

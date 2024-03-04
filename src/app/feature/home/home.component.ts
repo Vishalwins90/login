@@ -21,7 +21,7 @@ export class HomeComponent {
   updatdataoneData: any = [] = []
   editingIndex: any; 
   editedData: any = {};
-   userName:any=[]
+  userName:any=[]
   constructor(public getdata: LoginPageService, public router: Router, public dialog: MatDialog,public message:LoginService,public activateroute:ActivatedRoute) { }
   ngOnInit() {
     this.loadData();
@@ -31,14 +31,14 @@ export class HomeComponent {
     let user=sessionStorage.getItem('username')
 this.userName.push(user)
 console.log(this.userName)
-    // this.getdata.get().subscribe(
-    //   (data: any) => {
-    //     this.alldata = new MatTableDataSource(data);
-    //     //  this.dataSource = [...this.alldata];
-    //    console.log('this.alldata', this.alldata)
-    //   },
-    // );
-this.alldata=this.activateroute.snapshot.data['data']
+    this.getdata.get().subscribe(
+      (data: any) => {
+        this.alldata = new MatTableDataSource(data);
+          // this.dataSource = [...this.alldata];
+       console.log('this.alldata', this.alldata)
+      },
+    );
+// this.alldata= new MatTableDataSource(this.activateroute.snapshot.data['data'])
   }
 
   delete(index: number) {
@@ -55,16 +55,19 @@ this.alldata=this.activateroute.snapshot.data['data']
 this.message.showSuccess('User deleted Successfull')
   }
   logOut() {
-    sessionStorage.removeItem('token')
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('otp');
+    sessionStorage.removeItem('otpVerfied');
     this.router.navigateByUrl('/login')
   }
 
   edit(index:any) {
-    debugger
+    
     if (this.editingIndex === index) {
       // this.editingIndex = -1; 
     } else {
       this.editingIndex = index; 
+      // this.editedData = { ...this.alldata.data[index] };
       this.editedData = { ...this.alldata.data[index] };
     }
   }
@@ -86,11 +89,12 @@ addnewUser(){
 }
 
 saveEdit(index: number) {
-debugger
+
   this.alldata.data[index] = { ...this.editedData };
   this.getdata.patchdata(this.alldata.data[index].id, this.editedData).subscribe(
     (data: any) => {
-      this.alldata =   new MatTableDataSource(this.alldata.data)
+       this.alldata =   new MatTableDataSource(this.alldata.data)
+      // this.alldata=this.activateroute.snapshot.data['data']
       console.log('Data updated successfully:', data);    
       this.message.showSuccess('User data updated successfully');
     },

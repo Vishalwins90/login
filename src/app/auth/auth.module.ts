@@ -17,13 +17,16 @@ import {MatButtonModule} from '@angular/material/button';
 import { UserResetPasswordComponent } from './user-reset-password/user-reset-password.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { OtpComponent } from './otp/otp.component';
+import { NgOtpInputModule } from  'ng-otp-input';
 @NgModule({
   declarations: [
     LoginComponent,
     SignUpComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    UserResetPasswordComponent
+    UserResetPasswordComponent,
+    OtpComponent
     
   ],
   imports: [
@@ -37,7 +40,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatButtonModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    NgOtpInputModule
     
   ]
 })

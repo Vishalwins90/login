@@ -13,12 +13,11 @@ constructor(  public dialogRef: MatDialogRef<ConfirmationDialogComponent>,
 
 }
 reset(){
-debugger
   this.dialogRef.close(true);
 
 }
 notReset(){
-  debugger
+
   this.dialogRef.close(false);
 }
 }

@@ -9,6 +9,9 @@
             <span *ngIf="sign.controls['username'].hasError('required') && sign.controls['username'].touched">Enter your
                 email</span>
             <span *ngIf="sign.controls['username'].hasError('email')">Please enter a valid email</span>
+            <input formControlName="Phonenumber" type="number" placeholder="enter your number">
+            <span *ngIf="sign.controls['Phonenumber'].hasError('required') && sign.controls['Phonenumber'].touched">Enter your Phonenumber</span>
+            <!-- <span *ngIf="sign.controls['Phonenumber'].hasError('maxlength')"></span> -->
             <input formControlName="password" type="text" placeholder="Enter your password">
             <span *ngIf="sign.controls['password'].hasError('required') && sign.controls['password'].touched">Enter your
                 password</span>

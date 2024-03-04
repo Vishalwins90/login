@@ -19,7 +19,7 @@ hide = true;
     @Inject(MAT_DIALOG_DATA) public data: any,) { }
 
   resetPassword() {
-    debugger
+  
     if (this.reset.invalid) {
       this.reset.markAllAsTouched()
     }

@@ -22,6 +22,7 @@
     "@angular/router": "^16.1.0",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "@types/body-parser": "^1.19.5",
+    "ng-otp-input": "^1.9.3",
     "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",
     "toaster": "^0.1.2",
