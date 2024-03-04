@@ -13,6 +13,7 @@ import { ConfirmationDialogComponent } from 'src/app/feature/confirmation-dialog
 })
 export class UserResetPasswordComponent {
   reset: any;
+  hide2=true
   hide = true;
    hidedata=true
 userDatapassword:any=[]
@@ -20,6 +21,7 @@ userDatapassword:any=[]
       @Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog) { }
 
     ngOnInit() {
+    
       let token=sessionStorage.getItem('token')
       this.alldata.getdatabyId(token).subscribe((data:any)=> 
       // this.userData.push(data)
@@ -67,6 +69,9 @@ userDatapassword:any=[]
     nextbutton(): void {
       this.hidedata = !this.hidedata;
     }
+    hidedata2(){
+      this.hide2 = !this.hide2;
+    }
     resetPassword() {
 debugger
       if (this.reset.invalid) {
@@ -75,7 +80,6 @@ debugger
       else {
         let dialogRef = this.dialog.open(ConfirmationDialogComponent, {
           width: '250px'
-      
         });
         dialogRef.afterClosed().subscribe((result: any) => {
           if (result) {
@@ -84,7 +88,6 @@ debugger
       oldPassword: this.reset.value.oldPassword,
      }
         let data:any={
-       
           password:this.reset.value.password
         }
         if(this.userDatapassword==password.oldPassword){
@@ -103,8 +106,6 @@ debugger
           this.message.showError("old password doesn't match")
         }
         }
-          
-      
         });
    
       }

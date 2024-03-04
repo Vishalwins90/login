@@ -18,7 +18,6 @@ export class ForgotPasswordComponent {
 
   }
   forgotPassword() {
-
     let alluseremail: any = {
       username: this.forgot.value.username,
     }
@@ -34,7 +33,6 @@ export class ForgotPasswordComponent {
           this.message.showError("User not found");
         }
       },
-     
     );
   }
   }

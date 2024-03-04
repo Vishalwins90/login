@@ -17,7 +17,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { FeatureModule } from './feature/feature.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { featureRoutingModule } from './feature/feature-routing.module';
-
+import { ResloveGuard } from './core/guard/reslove.guard';
 // import { AuthModule } from './auth/auth.module';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 @NgModule({
@@ -39,11 +39,13 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
      BrowserAnimationsModule,
      FeatureModule,
      featureRoutingModule,
-     MatDialogModule
+     MatDialogModule,
+
   ],
   providers: [
     { provide: MatDialogRef, useValue: {} },
-    { provide: MAT_DIALOG_DATA, useValue: {  }}
+    { provide: MAT_DIALOG_DATA, useValue: {  }},
+    ResloveGuard
 ],
   bootstrap: [AppComponent]
 })

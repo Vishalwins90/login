@@ -22,7 +22,7 @@ export class LoginComponent {
   }
 
   showPassword:any
-   showPasswordOnPress:any= false
+  showPasswordOnPress:any= false
   login: FormGroup = this.formbuilder.group({
     username: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
@@ -50,10 +50,11 @@ export class LoginComponent {
         if (matchdata) {
           this.notifyService.showSuccess("User login Successful");
           sessionStorage.setItem('token', matchdata.id);
-          sessionStorage.setItem('oldpassword',matchdata.password)
+          sessionStorage.setItem('username',matchdata.username)
           this.router.navigate(['/home']);
           this.login.reset();
-        } else {
+        }
+        else{
           this.notifyService.showError("User not found");
         }
       },

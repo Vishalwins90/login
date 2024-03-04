@@ -27,9 +27,9 @@ hide = true;
       let id = this.route.snapshot.paramMap.get('id');
       console.log(id)
           let data:any={
-          oldPassword: this.reset.value.oldPassword,
+            password: this.reset.value.password,
         }
-      this.alldata.patchdata(id, this.reset.value).subscribe((data: any) =>
+      this.alldata.patchdata(id,data).subscribe((data: any) =>
         console.log(data)
       );
       this.reset.reset()

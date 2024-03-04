@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginPageService } from 'src/app/core/login-page.service';
 import { LoginService } from 'src/app/core/login.service';
 import { EditdetailsComponent } from '../editdetails/editdetails.component';
@@ -18,25 +18,27 @@ export class HomeComponent {
   inlineForm: any
   displayedColumns: string[] = ['fullname', 'username', 'password', 'action',]
   alldata: any;
-  // dataSource = this.alldata;
   updatdataoneData: any = [] = []
-  // editingIndex: number = -1; 
   editingIndex: any; 
   editedData: any = {};
-  constructor(public getdata: LoginPageService, public router: Router, public dialog: MatDialog,public message:LoginService) { }
+   userName:any=[]
+  constructor(public getdata: LoginPageService, public router: Router, public dialog: MatDialog,public message:LoginService,public activateroute:ActivatedRoute) { }
   ngOnInit() {
     this.loadData();
   }
 
   loadData() {
-    this.getdata.get().subscribe(
-      (data: any) => {
-        this.alldata = new MatTableDataSource(data);
-        //  this.dataSource = [...this.alldata];
-       console.log('this.alldata', this.alldata)
-      },
-    );
-
+    let user=sessionStorage.getItem('username')
+this.userName.push(user)
+console.log(this.userName)
+    // this.getdata.get().subscribe(
+    //   (data: any) => {
+    //     this.alldata = new MatTableDataSource(data);
+    //     //  this.dataSource = [...this.alldata];
+    //    console.log('this.alldata', this.alldata)
+    //   },
+    // );
+this.alldata=this.activateroute.snapshot.data['data']
   }
 
   delete(index: number) {
@@ -52,7 +54,7 @@ export class HomeComponent {
     );
 this.message.showSuccess('User deleted Successfull')
   }
-  logout() {
+  logOut() {
     sessionStorage.removeItem('token')
     this.router.navigateByUrl('/login')
   }
@@ -67,7 +69,7 @@ this.message.showSuccess('User deleted Successfull')
     }
   }
 
-addnewuser(){
+addnewUser(){
   let dialogRef = this.dialog.open(EditdetailsComponent, {
     width: '408px',
     height: '435px',
@@ -111,7 +113,6 @@ resetPassword(){
   dialogRef.afterClosed().subscribe((result: any) => {
     if (result) {
       this.loadData();
-      // this.message.showSuccess("New user Add Successfull")
     }
 
   });
