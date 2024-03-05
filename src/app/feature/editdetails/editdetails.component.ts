@@ -40,7 +40,6 @@ sign:any
       this.sign.markAllAsTouched();
     }
     else{
-      // this.pop.showSuccess("Your account is created")
   this.userdata.senduserdata(this.sign.value).subscribe((Element:any)=>
   console.log(Element)
   )

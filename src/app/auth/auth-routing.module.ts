@@ -7,14 +7,14 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { resetguard } from '../core/guard/reset.guard';
-import { OtpComponent } from './otp/otp.component';
+
 
  const routes: Routes = [
   { path: 'login', component: LoginComponent,canActivate: [unauthguard]  },
   { path: 'signup', component: SignUpComponent,canActivate: [unauthguard]  },
   { path: 'forgot',component:ForgotPasswordComponent},
   {path:'',component:ResetPasswordComponent},
-  {path:'otp',component:OtpComponent}
+ 
 
 ];
 

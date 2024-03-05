@@ -46,7 +46,6 @@ console.log(this.userName)
     this.getdata.delete(dataToDelete.id).subscribe(
       () => {
         this.alldata.data.splice(index, 1);
-        // this.dataSource = this.alldata;
        this.alldata = [...this.alldata.data]
         this.alldata =   new MatTableDataSource(...this.alldata.data)
         console.log(dataToDelete.id);
@@ -56,8 +55,6 @@ this.message.showSuccess('User deleted Successfull')
   }
   logOut() {
     sessionStorage.removeItem('token');
-    sessionStorage.removeItem('otp');
-    sessionStorage.removeItem('otpVerfied');
     this.router.navigateByUrl('/login')
   }
 
@@ -67,7 +64,6 @@ this.message.showSuccess('User deleted Successfull')
       // this.editingIndex = -1; 
     } else {
       this.editingIndex = index; 
-      // this.editedData = { ...this.alldata.data[index] };
       this.editedData = { ...this.alldata.data[index] };
     }
   }
@@ -89,12 +85,10 @@ addnewUser(){
 }
 
 saveEdit(index: number) {
-
   this.alldata.data[index] = { ...this.editedData };
   this.getdata.patchdata(this.alldata.data[index].id, this.editedData).subscribe(
     (data: any) => {
        this.alldata =   new MatTableDataSource(this.alldata.data)
-      // this.alldata=this.activateroute.snapshot.data['data']
       console.log('Data updated successfully:', data);    
       this.message.showSuccess('User data updated successfully');
     },

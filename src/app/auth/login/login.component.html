@@ -3,7 +3,7 @@
         <h4 style="color: red;">login-Page</h4>
         <form class="login-form" [formGroup]="login">
             <input formControlName="username" type="text" placeholder="Email/Phonenumber"/> 
-             <span *ngIf="login.controls['username'].hasError('required') && login.controls['username'].touched">Please enter valid email or phonenumber</span> 
+             <span *ngIf="login.controls['username'].hasError('required') && login.controls['username'].touched">Please enter valid email or Phonenumber</span> 
             <!-- <span *ngIf="login.controls['username'].hasError('email')">Please enter a valid email</span> -->
           <div class="password-container">
             <input type="password" placeholder="Enter Password" formControlName="password" [type]="hide ? 'password' : 'text'">
@@ -12,7 +12,6 @@
             <span *ngIf="login.controls['password'].hasError('required') && login.controls['password'].touched">Password
                 is required</span>
         </form>
-    
         <h6>Don't have an account?<a routerLink="/signup">Sign-up</a></h6>
         <h6>Forgot Password<a routerLink="/forgot">forgot</a></h6>
         <button [disabled]="loading" type="button" class="btn btn-primary" [disabled]='login.invalid'
@@ -20,9 +19,7 @@
         src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />submit</button>
     </div>
 </div>
-
 <!-- {{ '{"username": 7009682727,"password": "Vishal@12" }' | json}} -->
-
 <div class="content">
     <span *ngIf="validOtp">OTP Received :</span><h3>{{validOtp}}</h3>
     <div class="o-c">
@@ -30,7 +27,6 @@
         <div class="card" *ngIf="validOtp">
           <p class="a-o-i">Enter verification code</p>
           <ng-otp-input  #ngOtpInput  (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
-          <!-- <span *ngIf="otp" class="o-t-p">Entered otp :-{{otp}}</span> -->
           <button style="width: 104px; margin-top: 18px;margin-left: 113px;
           width: 104px;" class="btn btn-primary" (click)="otpVerfication()" type="button">Submit</button>
         </div>
