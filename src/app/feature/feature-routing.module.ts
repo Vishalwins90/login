@@ -5,11 +5,13 @@ import { AuthGuard } from '../core/guard/login.guard';
 // import { unauthguard } from '../core/interceptor/unauth.guard';
 import { unauthguard } from '../core/guard/unauth.guard';
 import { HomeComponent } from './home/home.component';
+import { DragDropComponent } from './drag-drop/drag-drop.component';
 
 
  const routes: Routes = [
 
-  { path: '', component: HomeComponent,  }
+  { path: '', component: HomeComponent,  },
+  { path: 'drop', component: DragDropComponent}
 ];
 
 

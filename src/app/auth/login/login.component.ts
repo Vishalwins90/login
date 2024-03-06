@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 // import { LoginInterceptor } from 'src/app/core/interceptor/login.interceptor';
 import { LoginPageService } from 'src/app/core/login-page.service';
 import { LoginService } from 'src/app/core/login.service';
-
+const phoneEmailRegex = /^(\d{10}|\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3}))$/;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,14 +21,12 @@ export class LoginComponent {
       'height': '50px'
     }
   }
-  getdata: any = []
-  payload: any = []
+  payLoad: any = []
   loading: any = false
-  Phide = true
   hide: boolean = true
   validOtp!: number;
   otp: any
-  matchdata: any
+  matchData: any
   showloginpage: Boolean = true
   timer: any;
   toggleVisibility(): void {
@@ -37,7 +35,7 @@ export class LoginComponent {
   showPassword: any
   showPasswordOnPress: any = false
   login: FormGroup = this.formbuilder.group({
-    username: ['', [Validators.required]],
+    username: ['', [Validators.required,Validators.pattern(phoneEmailRegex)]],
     password: ['', [Validators.required]],
   });
   constructor(public notifyService: LoginService, public alluserdata: LoginPageService, public router: Router, private formbuilder: FormBuilder) {
@@ -58,9 +56,10 @@ export class LoginComponent {
       };
       this.alluserdata.get().subscribe(
         (data: any) => {
-          this.payload = data;
-          this.matchdata = this.payload.find((data: any) => data.username === userdata.username || data.Phonenumber && data.password === userdata.password);
-          if (this.matchdata) {
+          this.payLoad = data;
+          this.matchData = this.payLoad.find((data: any) => data.username === userdata.username || data.Phonenumber && data.password === userdata.password);
+          if (this.matchData) {
+            this.notifyService.showSuccess("Otp Send Successful");
             this.login.reset();
             setTimeout(() => {
               this.validOtp = Math.floor(Math.random() * 1000000);
@@ -83,9 +82,8 @@ export class LoginComponent {
       clearInterval(this.timer)
     }
     if (this.validOtp == this.otp) {
-      this.notifyService.showSuccess("Otp Send Successful");
-      sessionStorage.setItem('token', this.matchdata.id);
-      sessionStorage.setItem('username', this.matchdata.username)
+      sessionStorage.setItem('token', this.matchData.id);
+      sessionStorage.setItem('username', this.matchData.username)
       this.router.navigate(['/home']);
     }
     else {

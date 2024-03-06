@@ -27,18 +27,21 @@
       <button style='margin-right:16px' (click)="addnewUser()" mat-raised-button  class="example-icon favorite-icon" color="warn">
   <i class="fa fa-times mat-icon"></i>Add-user
       </button>
+      <button style='margin-right:16px' (click)="dragDrop()" mat-raised-button  class="example-icon favorite-icon" color="primary">
+        <i class="fa fa-times mat-icon"></i>Drag-Drop
+            </button>
     </mat-toolbar>
 
    <div class="heading">
       <h1 style="text-align: center; color: red;">User-Details</h1>
     </div>
-    <table mat-table [dataSource]="alldata" class="mat-elevation-z8">
+    <table mat-table [dataSource]="allData" class="mat-elevation-z8">
       <ng-container *ngFor="let column of displayedColumns">
         <ng-container [matColumnDef]="column">
           <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
-          <td mat-cell *matCellDef="let alldata; let i = index">
+          <td mat-cell *matCellDef="let allData; let i = index">
             <ng-container *ngIf="editingIndex !== i; else editMode;">
-              {{ alldata[column]}}
+              {{ allData[column]}}
               <button  style='margin-right:16px' *ngIf="column=='action'" mat-raised-button   color="warn" focusable="false" (click)="edit(i)">
                <i class="fa fa-times mat-icon"></i>Edit
                </button> 
@@ -47,7 +50,6 @@
                   </button> 
             </ng-container>
             <ng-template #editMode>
-             
                 <mat-form-field appearance="outline" *ngIf="column!=='action'" class="example-full-width">
                   <input    matInput   type="text" [(ngModel)]="editedData[column]" />
                 </mat-form-field>
@@ -65,3 +67,12 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+
+    <ng-template>
+      <p>Hip!</p>
+    </ng-template>
+    <ng-container >
+      <P>SSS</P>
+    </ng-container>
+    

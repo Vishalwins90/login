@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReusableDirective } from './directive/reusable.directive';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ReusableDirective
+  ],
   imports: [
     CommonModule
   ]

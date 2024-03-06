@@ -19,8 +19,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { featureRoutingModule } from './feature/feature-routing.module';
 import { ResloveGuard } from './core/guard/reslove.guard';
 import { NgOtpInputModule } from  'ng-otp-input';
+
 // import { AuthModule } from './auth/auth.module';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent
@@ -41,7 +43,9 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
      FeatureModule,
      featureRoutingModule,
      MatDialogModule,
-     NgOtpInputModule
+     NgOtpInputModule,
+     CommonModule
+     
 
   ],
   providers: [

@@ -17,9 +17,9 @@ export class HomeComponent {
   id: any
   inlineForm: any
   displayedColumns: string[] = ['fullname', 'username', 'password', 'action',]
-  alldata: any;
+  allData: any;
   updatdataoneData: any = [] = []
-  editingIndex: any; 
+  editingIndex:number = -1; 
   editedData: any = {};
   userName:any=[]
   constructor(public getdata: LoginPageService, public router: Router, public dialog: MatDialog,public message:LoginService,public activateroute:ActivatedRoute) { }
@@ -33,22 +33,19 @@ this.userName.push(user)
 console.log(this.userName)
     this.getdata.get().subscribe(
       (data: any) => {
-        this.alldata = new MatTableDataSource(data);
-          // this.dataSource = [...this.alldata];
-       console.log('this.alldata', this.alldata)
+        this.allData = new MatTableDataSource(data);
+       console.log('this.alldata', this.allData)
       },
     );
-// this.alldata= new MatTableDataSource(this.activateroute.snapshot.data['data'])
   }
 
   delete(index: number) {
-    const dataToDelete = this.alldata.data[index];
+    debugger
+    const dataToDelete = this.allData.data[index];
     this.getdata.delete(dataToDelete.id).subscribe(
       () => {
-        this.alldata.data.splice(index, 1);
-       this.alldata = [...this.alldata.data]
-        this.alldata =   new MatTableDataSource(...this.alldata.data)
-        console.log(dataToDelete.id);
+        this.allData.data.splice(index, 1);
+        this.allData = new MatTableDataSource(...this.allData.data)
       },
     );
 this.message.showSuccess('User deleted Successfull')
@@ -59,12 +56,13 @@ this.message.showSuccess('User deleted Successfull')
   }
 
   edit(index:any) {
-    
+    debugger
     if (this.editingIndex === index) {
-      // this.editingIndex = -1; 
+       this.editingIndex = -1; 
+       console.log(this.editingIndex-1,"dfddf")
     } else {
       this.editingIndex = index; 
-      this.editedData = { ...this.alldata.data[index] };
+      this.editedData = { ...this.allData.data[index] };
     }
   }
 
@@ -85,10 +83,10 @@ addnewUser(){
 }
 
 saveEdit(index: number) {
-  this.alldata.data[index] = { ...this.editedData };
-  this.getdata.patchdata(this.alldata.data[index].id, this.editedData).subscribe(
+  this.allData.data[index] = { ...this.editedData };
+  this.getdata.patchdata(this.allData.data[index].id, this.editedData).subscribe(
     (data: any) => {
-       this.alldata =   new MatTableDataSource(this.alldata.data)
+       this.allData = new MatTableDataSource(this.allData.data)
       console.log('Data updated successfully:', data);    
       this.message.showSuccess('User data updated successfully');
     },
@@ -97,8 +95,10 @@ saveEdit(index: number) {
 }
 
 cancel(index:any){
-  this.alldata.data[index] = { ...this.editedData };
+  debugger
+  this.allData.data[index] = { ...this.editedData };
   this.editingIndex = -1;
+  
 }
 
 resetPassword(){
@@ -112,8 +112,11 @@ resetPassword(){
     if (result) {
       this.loadData();
     }
-
   });
 }
+  dragDrop(){
+    this.router.navigateByUrl('/drop')
+  }
+
 }
 

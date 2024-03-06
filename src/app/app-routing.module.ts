@@ -5,7 +5,7 @@ import { AuthGuard } from './core/guard/login.guard';
 // import { unauthguard } from './core/interceptor/unauth.guard';
 import { unauthguard } from './core/guard/unauth.guard';
 import { PagenotfoundComponent } from './feature/pagenotfound/pagenotfound.component';
-import { resetguard } from './core/guard/reset.guard';
+
 import { ResloveGuard } from './core/guard/reslove.guard';
 
 const routes: Routes = [

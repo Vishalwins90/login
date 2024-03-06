@@ -14,7 +14,7 @@ import { LoginService } from 'src/app/core/login.service';
 export class ResetPasswordComponent {
   reset: any;
   hide = true;
-  hidedata = true
+  hideData = true
   constructor(private formBuilder: FormBuilder, public router: Router, private route: ActivatedRoute, public alldata: LoginPageService, public message: LoginService, public dialogRef: MatDialogRef<ResetPasswordComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,) { }
   resetPassword() {
@@ -71,8 +71,8 @@ export class ResetPasswordComponent {
   toggleVisibility(): void {
     this.hide = !this.hide;
   }
-  nextbutton(): void {
-    this.hidedata = !this.hidedata;
+  nexthideButton(): void {
+    this.hideData = !this.hideData;
   }
 
 }

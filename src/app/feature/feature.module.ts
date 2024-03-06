@@ -18,6 +18,13 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { AdminComponent } from './admin/admin.component';
 
+// import { DragDropComponent } from './drag-drop/drag-drop.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import{CdkDropListGroup} from '@angular/cdk/drag-drop';
+import { TodoComponent } from './todo/todo.component';
+import { DragDropComponent } from './drag-drop/drag-drop.component';
+import { TodoDoneComponent } from './todo-done/todo-done.component';
+import { DragDropService } from '../core/drag-drop.service';
 featureRoutingModule
 @NgModule({
   declarations: [
@@ -25,7 +32,10 @@ featureRoutingModule
     PagenotfoundComponent,
     EditdetailsComponent,
     ConfirmationDialogComponent,
-    AdminComponent
+    AdminComponent,
+    TodoComponent,
+    DragDropComponent,
+    TodoDoneComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +50,11 @@ featureRoutingModule
     FormsModule,
     MatInputModule,
     MatMenuModule,
-    MatToolbarModule
-  ]
+    MatToolbarModule,
+    DragDropModule,
+    CommonModule
+    
+  ],
+  providers: [DragDropService],
 })
 export class FeatureModule { }

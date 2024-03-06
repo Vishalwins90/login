@@ -6,7 +6,7 @@ import { unauthguard } from '../core/guard/unauth.guard';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { resetguard } from '../core/guard/reset.guard';
+
 
 
  const routes: Routes = [

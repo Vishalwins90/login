@@ -11,11 +11,11 @@ import { LoginService } from 'src/app/core/login.service';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent {
-  logindata: any = [] = []
+logindata: any = [] = []
 timer:any
 
   forgot: FormGroup = this.formbuilder.group({
-    username: ['', [Validators.required, Validators.email]],
+  username: ['', [Validators.required, Validators.email]],
   });
   constructor(public login: LoginPageService, public formbuilder: FormBuilder, public router: Router, public message: LoginService) {
 

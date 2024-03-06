@@ -16,8 +16,6 @@ export class AuthGuard implements CanActivate {
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let token = sessionStorage.getItem('token');
-    let otp = sessionStorage.getItem('otpVerfied');
-
     if (token) {
       return true
     }

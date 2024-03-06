@@ -9,7 +9,7 @@ import {MatTableModule} from '@angular/material/table';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import {MatIconModule} from '@angular/material/icon';
-
+import {DragDropModule} from '@angular/cdk/drag-drop';
 // import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -41,7 +41,8 @@ import { NgOtpInputModule } from  'ng-otp-input';
     MatButtonModule,
     MatToolbarModule,
     MatDialogModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    DragDropModule
     
   ]
 })
