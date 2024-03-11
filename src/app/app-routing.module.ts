@@ -14,12 +14,12 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: 'home',
+    path: 'dashboard',
     loadChildren: () => import('./feature/feature.module').then(m => m.FeatureModule),
      canActivate: [AuthGuard],
-    resolve:{
-       data:ResloveGuard
-    },
+    // resolve:{
+    //    data:ResloveGuard
+    // },
   },
    {
     path: 'reset/:id',

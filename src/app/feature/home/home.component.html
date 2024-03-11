@@ -1,41 +1,8 @@
 
- <!-- <div class="b" style="text-align: center; margin-right: -1115px; margin-top: 28px;">
-      <button mat-raised-button   color="primary" focusable="false" (click)="logout()">
-        <i class="fa fa-times mat-icon"></i>Logout
-        </button>
-     </div> -->
-     <mat-toolbar>
-      <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"> -->
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu" class="example-icon favorite-icon">
-          <button (click)="resetPassword()" mat-menu-item>
-            <mat-icon>password</mat-icon>
-            <span>Reset Password</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>account_circle</mat-icon>
-            <span>{{userName}}</span>
-          </button>
-        </mat-menu>
-      <span style="color: blue;">Dashboard</span>
-      <span class="example-spacer"></span>
-      <button (click)="logOut()" style='margin-right:16px' class="btn btn-primary" >
-        <mat-icon aria-hidden="false">login</mat-icon>
-      </button>
-      <button style='margin-right:16px' (click)="addnewUser()" mat-raised-button  class="example-icon favorite-icon" color="warn">
-  <i class="fa fa-times mat-icon"></i>Add-user
-      </button>
-      <button style='margin-right:16px' (click)="dragDrop()" mat-raised-button  class="example-icon favorite-icon" color="primary">
-        <i class="fa fa-times mat-icon"></i>Drag-Drop
-            </button>
-    </mat-toolbar>
-
    <div class="heading">
       <h1 style="text-align: center; color: red;">User-Details</h1>
-    </div>
-    <table mat-table [dataSource]="allData" class="mat-elevation-z8">
+    </div> 
+ <table mat-table [dataSource]="allData" class="mat-elevation-z8">
       <ng-container *ngFor="let column of displayedColumns">
         <ng-container [matColumnDef]="column">
           <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
@@ -67,12 +34,3 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-
-
-    <ng-template>
-      <p>Hip!</p>
-    </ng-template>
-    <ng-container >
-      <P>SSS</P>
-    </ng-container>
-    

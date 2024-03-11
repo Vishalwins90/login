@@ -1,8 +1,8 @@
 <div class="login-page" *ngIf="showloginpage">
     <div class="form">
-        <h4 style="color: red;">login-Page</h4>
+        <h4 style="color: red;">Login-Page</h4>
         <form class="login-form" [formGroup]="login">
-            <input formControlName="username" type="text" placeholder="Email/Phonenumber"/> 
+            <input formControlName="username" type="text" placeholder="Email Phonenumber"/> 
              <span *ngIf="login.controls['username'].hasError('required') && login.controls['username'].touched">Please enter email or Phonenumber</span> 
              <span *ngIf="login.controls['username'].hasError('pattern')">Please Enter Valid Phonenumber or valid Email</span>
           <div class="password-container">

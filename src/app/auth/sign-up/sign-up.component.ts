@@ -12,7 +12,7 @@ import { LoginService } from 'src/app/core/login.service';
 })
 export class SignUpComponent {
   constructor(private formBulider: FormBuilder, public senduser: LoginPageService, public pop: LoginService, public dialogRef: MatDialogRef<SignUpComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,) {
+    ) {
   }
   sign: FormGroup = this.formBulider.group({
     fullname: ['', [Validators.required]],

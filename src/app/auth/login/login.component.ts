@@ -84,7 +84,7 @@ export class LoginComponent {
     if (this.validOtp == this.otp) {
       sessionStorage.setItem('token', this.matchData.id);
       sessionStorage.setItem('username', this.matchData.username)
-      this.router.navigate(['/home']);
+      this.router.navigate(['/dashboard']);
     }
     else {
       this.timer = setTimeout(() => {
