@@ -1,34 +1,57 @@
 
-<div class="close" (click)="$event.stopPropagation()">
-    <mat-dialog-actions style="margin-left: 330px;">
-        <mat-icon  mat-dialog-close>close</mat-icon>
-    </mat-dialog-actions>
+<div class="button">
+  <button routerLink="/home" type="submit" color="warn" mat-raised-button  >Back</button>
 </div>
-<div  class="login-page">
-    <div (click)="$event.stopPropagation()" class="form" style="margin-top: -25px;
-    top: -12px;margin-left: -117px;">
-        <h5>Add-User</h5>
-        <form (click)="$event.stopPropagation()" [formGroup]="sign">
-            <input formControlName="fullname" type="text" placeholder="enter your full name">
-            <span *ngIf="sign.controls['fullname'].hasError('required') && sign.controls['fullname'].touched">Enter your
-                fullname</span>
-            <input formControlName="username" type="text" placeholder="enter your username">
-            <span *ngIf="sign.controls['username'].hasError('required') && sign.controls['username'].touched">Enter your
-                username</span>
+
+
+    <form class="row g-3" [formGroup]="sign" style="position: absolute;
+    margin-top: 27px">
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Name</label>
+          <input formControlName="fullname" type="tex" class="form-control" id="inputEmail4" placeholder="Enter your full name">
+          <span *ngIf="sign.controls['fullname'].hasError('required') && sign.controls['fullname'].touched">Enter your
+            fullname</span>
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Email</label>
+          <input formControlName="username" type="text" class="form-control" id="inputPassword4" placeholder="Enter your username">
+          <span *ngIf="sign.controls['username'].hasError('required') && sign.controls['username'].touched">Enter your
+            username</span>
             <span *ngIf="sign.controls['username'].hasError('email')">Please enter a valid email</span>
-            <input formControlName="password" type="text" placeholder="enter your password">
-            <span *ngIf="sign.controls['password'].hasError('required') && sign.controls['password'].touched">Enter your
-                password</span>
-            <span *ngIf="sign.controls['password'].hasError('pattern')">
-                Password must contain at least one number, one uppercase and a lowercase letter
-                and at least
-            </span>
-            <span *ngIf="sign.controls['password'].hasError('minlength')">
-                Password must be at least 6 characters long.
-            </span>
-            <span *ngIf="sign.controls['password'].hasError('maxlength')">
-                Password cannot be longer than 30 characters.</span>
-        </form>
-    <button  
-      type="button"  [disabled]='sign.invalid' class="btn btn-primary" (click)="Submit()">Submit</button>
-    </div>
+        </div>
+        <div class="col-6">
+          <label for="inputAddress2" class="form-label">Password</label>
+          <input  formControlName="password" type="password" class="form-control" id="inputAddress2" placeholder="Please enter your Passowrd">
+          <span *ngIf=" sign.controls['password'].hasError('required') && sign.controls['password'].touched">Please enter your Password</span>
+          <span *ngIf="sign.controls['password'].hasError('pattern')">
+            Password must contain at least one number, one uppercase and a lowercase letter
+            and at least
+        </span>
+        <span *ngIf="sign.controls['password'].hasError('minlength')">
+            Password must be at least 6 characters long.
+        </span>
+        <span *ngIf="sign.controls['password'].hasError('maxlength')">
+            Password cannot be longer than 30 characters.</span>
+        </div>
+        <div class="col-md-6">
+          <label  for="inputCity" class="form-label">Phonenumber</label>
+          <input  (keypress)="numbers($event)"  formControlName="Phonenumber" type="text" class="form-control" id="inputCity" placeholder="Enter your number ">
+          <span *ngIf=" sign.controls['Phonenumber'].hasError('required') && sign.controls['Phonenumber'].touched">Please enter number</span>
+          <span *ngIf=" sign.controls['Phonenumber'].hasError('maxlength')">Enter ten digit number only</span>
+          
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">Role</label>
+          <select id="inputState" formControlName="dropdown" class="form-select">
+            <option selected>Choose...</option>
+            <option value="admin">Admin</option>
+            <option value="user">user</option>
+          </select>
+          <span *ngIf="sign.controls['dropdown'].hasError('required') && sign.controls['dropdown'].touched">Please select a role</span>
+        </div>
+    
+   
+        <div class="col-12">
+          <button (click)="Submit()" type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </form>

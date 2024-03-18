@@ -59,14 +59,20 @@ export class LoginComponent {
           this.payLoad = data;
           this.matchData = this.payLoad.find((data: any) => data.username === userdata.username || data.Phonenumber && data.password === userdata.password);
           if (this.matchData) {
-            this.notifyService.showSuccess("Otp Send Successful");
-            this.login.reset();
-            setTimeout(() => {
-              this.validOtp = Math.floor(Math.random() * 1000000);
-            }, 5000);
-            this.showloginpage = false
-            console.log(this.validOtp)
-          }
+     if (this.matchData.Status==='inactive'){
+      this.notifyService.showError("Please Connect to Super admin Your Status inactive")
+     }
+     else{
+      this.notifyService.showSuccess("Otp Send Successful");
+      this.login.reset();
+      setTimeout(() => {
+        this.validOtp = Math.floor(Math.random() * 1000000);
+      }, 5000);
+      this.showloginpage = false
+      console.log(this.validOtp)
+
+     }
+           }
           else {
             this.timer = setTimeout(() => {
               this.notifyService.showError("User not found");
@@ -82,9 +88,16 @@ export class LoginComponent {
       clearInterval(this.timer)
     }
     if (this.validOtp == this.otp) {
+      debugger
       sessionStorage.setItem('token', this.matchData.id);
       sessionStorage.setItem('username', this.matchData.username)
+if(this.matchData.Role=='user'){
+  this.router.navigate(['/editor'])
+}
+    else {
       this.router.navigate(['/dashboard']);
+    }
+     
     }
     else {
       this.timer = setTimeout(() => {

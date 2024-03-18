@@ -16,7 +16,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import { AdminComponent } from './admin/admin.component';
 
 // import { DragDropComponent } from './drag-drop/drag-drop.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -25,6 +24,19 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import { DragDropService } from '../core/drag-drop.service';
 import { DasboardComponent } from './dasboard/dasboard.component';
+import { CodeEditorComponent } from './code-editor/code-editor.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { CKEditorModule } from "@ckeditor/ckeditor5-angular"
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { UserRequestComponent } from './user-request/user-request.component';
+import { UserListeningComponent } from './user-listening/user-listening.component';
+import { CodingRewiewlisteningComponent } from './coding-rewiewlistening/coding-rewiewlistening.component';
+// import { MatInputModule } from '@angular/material/input';
+// import { MatMomentDateModule } from "@angular/material-moment-adapter";
 featureRoutingModule
 @NgModule({
   declarations: [
@@ -32,14 +44,17 @@ featureRoutingModule
     PagenotfoundComponent,
     EditdetailsComponent,
     ConfirmationDialogComponent,
-    AdminComponent,
-    DasboardComponent
+    UserRequestComponent,
+    DasboardComponent,
+    UserListeningComponent,
+    CodeEditorComponent,
+    CodingRewiewlisteningComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     MatTableModule,
-     MainRoutingModule,
+    MainRoutingModule,
     featureRoutingModule,
     MatButtonModule,
     MatDialogModule,
@@ -51,7 +66,15 @@ featureRoutingModule
     MatToolbarModule,
     DragDropModule,
     CommonModule,
-    SharedModule
+    SharedModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMomentDateModule,
+    CKEditorModule,
+    MatFormFieldModule
+    
   ],
   providers: [DragDropService],
 })

@@ -1,0 +1,64 @@
+<form class="row g-3" [formGroup]="form">
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Title</label>
+    <input formControlName="Title" type="text" class="form-control" id="inputEmail4">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Add Rewiew</label>
+    <input type="tex" formControlName="AddRewiew" class="form-control" id="inputPassword4">
+  </div>
+  <div class="mb-3" style="width: 494px;">
+    <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+    <textarea formControlName="Description"   class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <div class="col-12" style="position: absolute;
+  left: 739px;
+  top: 202px">
+    <div class="date">
+      <mat-form-field class="example-form-field">
+          <mat-label>Start Date</mat-label>
+          <input matInput  [matDatepicker]="datepicker" formControlName="startdate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+          <mat-datepicker #datepicker>
+            <mat-datepicker-actions>
+              <button mat-button matDatepickerCancel>Cancel</button>
+              <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+            </mat-datepicker-actions>
+          </mat-datepicker>
+        </mat-form-field>
+        <div class="d" style="    position: absolute;
+        top: -1px;
+        left: 262px">
+         <mat-form-field class="example-form-field">
+          <mat-label>End date</mat-label>
+          <input matInput  [matDatepicker]="picker1" formControlName="Enddate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1>
+            <mat-datepicker-actions>
+              <button mat-button matDatepickerCancel>Cancel</button>
+              <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+            </mat-datepicker-actions>
+          </mat-datepicker>
+        </mat-form-field>
+        </div>
+      
+  </div>
+  </div>
+
+  <div class="editor" style="width: 654px;margin-top: 22px;">
+    <ckeditor [editor]="Editor" [data]="editorData" (ready)="onReady($event)" formControlName="Comment"></ckeditor> 
+  </div>
+
+</form>
+<div class="button" style="    position: absolute;
+margin-left: 487px;
+top: 457px ">
+  <button
+  type="button" class="btn btn-primary" (click)="SubmitTest()">Submit</button>
+</div>
+
+
+
+

@@ -1,36 +1,86 @@
+<mat-form-field>
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Filter data">
+</mat-form-field>
+ <div class="div" style="position: relative;
+ top: -71px;
+ margin-left: 286px;
+">
+  <a class="btn text-white" data-mdb-ripple-init style="background-color: #55acee;" href="#!" role="button" routerLink="/user">
+    <span style="    position: relative;
+    top: 5px"><mat-icon>account_circle</mat-icon></span> 
+   User Request
+   </a>
+ </div>
+ <div class="div" style="position: relative;
+ top: -109px;
+ margin-left: 518px;
+">
+  <button routerLink="/listen"type="button" class="btn btn-warning" data-mdb-ripple-init>User-listening</button>
+ </div>
 
-   <div class="heading">
-      <h1 style="text-align: center; color: red;">User-Details</h1>
-    </div> 
- <table mat-table [dataSource]="allData" class="mat-elevation-z8">
-      <ng-container *ngFor="let column of displayedColumns">
-        <ng-container [matColumnDef]="column">
-          <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
-          <td mat-cell *matCellDef="let allData; let i = index">
-            <ng-container *ngIf="editingIndex !== i; else editMode;">
-              {{ allData[column]}}
-              <button  style='margin-right:16px' *ngIf="column=='action'" mat-raised-button   color="warn" focusable="false" (click)="edit(i)">
-               <i class="fa fa-times mat-icon"></i>Edit
-               </button> 
-               <button style='margin-right:16px' *ngIf="column=='action'" mat-raised-button   color="primary" focusable="false" (click)="delete(i)">
-                <mat-icon>delete</mat-icon>
-                  </button> 
-            </ng-container>
-            <ng-template #editMode>
-                <mat-form-field appearance="outline" *ngIf="column!=='action'" class="example-full-width">
-                  <input    matInput   type="text" [(ngModel)]="editedData[column]" />
-                </mat-form-field>
-              
-              <button style='margin-right:16px' mat-raised-button *ngIf="column=='action'" color="warn"  (click)="cancel(i)">
-                <i class="fa fa-times mat-icon"></i>Cancel 
-              </button>
-              <button style='margin-right:16px' mat-raised-button *ngIf="column=='action'" color="primary"  (click)="saveEdit(i)">
-                <i class="fa fa-times mat-icon"></i>Save 
-              </button>
-            </ng-template>
-          </td>
+<div class="button">
+  <button style="position: absolute;
+      right: 43px;top: 96px" type="button" class="btn btn-primary" (click)="addnewUser()">Add-User</button>
+</div>
+
+<table mat-table matSort [dataSource]="allData" class="mat-elevation-z8" 
+>
+  <ng-container *ngFor="let column of displayedColumns">
+    <ng-container [matColumnDef]="column">
+      <th  mat-header-cell *matHeaderCellDef mat-sort-header>{{ column | titlecase }}</th>
+      <td  mat-cell *matCellDef="let allData; let i = index">
+        <ng-container *ngIf="editingIndex !== i; else editMode; ">
+       {{ column !== 'Status' ? allData[column] : '' }}
+       <!-- {{ column !== 'Status' ? allData[column] : '' }} -->
+          <form [formGroup]="form">
+            <div *ngIf="column=='Status'" class="col-md-4">
+              <select  #teams (change)="onSelected(teams.value,allData.id)" id="inputState"  class="form-select" formControlName="dropdown">
+                <option selected>{{allData.Status}}</option>
+                <option  value="active">active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+            </div>
+          </form>
+       
+          <button *ngIf="column=='action'" mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary"
+            (click)="edit(i)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button *ngIf="column=='action'" mat-icon-button matTooltip="Click to Delete" class="iconbutton"
+            (click)="delete(i)" color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
         </ng-container>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+        <ng-template #editMode>
+          <mat-form-field appearance="outline" *ngIf="column!=='action'">
+            <input  matInput type="text"  [(ngModel)]="editedData[column]" />
+          </mat-form-field>
+          <button style='margin-right:125px' *ngIf="column=='action'" mat-icon-button matTooltip="Click to Delete"
+            class="iconbutton" (click)="cancel(i)" color="warn">
+            <mat-icon>clear</mat-icon>
+          </button>
+          <button style='position: relative;
+              margin-right: 313px' *ngIf="column=='action'" mat-icon-button matTooltip="Click to Delete"
+            class="iconbutton" (click)="saveEdit(i)" color="warn">
+            <mat-icon>done</mat-icon>
+          </button>
+        </ng-template>
+
+      </td>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+          No data matching the filter.
+        </td>
+      </tr>
+    </ng-container>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<div class="pagination" style="margin-left: 517px;
+position: relative;
+top: 23px;
+">
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

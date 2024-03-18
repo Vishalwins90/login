@@ -7,17 +7,20 @@
     margin-bottom:5%;
     margin-top:5%;
     margin-left: 400px;
-    -webkit-text-stroke-width: medium;
+    /* -webkit-text-stroke-width: medium;/ */
   }
 
 
 
-  @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+  
 
 .login-page {
-  width: 742px;
+  width: 886px;
   padding: 8% 0 0;
-  margin-left: 26px;
+  position: absolute;
+  margin-left: -111px;
+  margin-top: -89px
+
 }
 .form {
   position: relative;
@@ -90,9 +93,9 @@ body {
   background: #76b852; /* fallback for old browsers */
   background: rgb(141,194,111);
   background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
+  /* font-family: "Roboto", sans-serif; */
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale;       */
 }
 
 span{

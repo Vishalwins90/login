@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginPageService {
   private apiUrl = 'http://localhost:3000/users';
+  private Url = 'http://localhost:3000/usersdata';
   users:any= []
   httpClient: any;
   baseURL: any;
@@ -35,6 +36,11 @@ return this.http.post(this.apiUrl,data)
 
 getdatabyId(id: any) {
   return this.http.get(this.apiUrl + "/" + id);
+}
+
+Senduserdata(data:any){
+  return this.http.post(this.Url,data)
+  // return this.http.post(this.apiUrl+"/"+id, data);
 }
 
 }

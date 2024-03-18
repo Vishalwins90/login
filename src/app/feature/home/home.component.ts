@@ -8,45 +8,62 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ResetPasswordComponent } from 'src/app/auth/reset-password/reset-password.component';
 import { UserResetPasswordComponent } from 'src/app/auth/user-reset-password/user-reset-password.component';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { FormBuilder } from '@angular/forms';
+// import {MatPaginator} from '@angular/material';
 
-export interface PeriodicElement {
-  fullname: string;
-  username: string;
-  password: any;
-}
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   id: any
-  // done = ['Get up', 'Brush teeth',];
-  done: any = [] ;
-  allDataEmpty: boolean = false;
+  noDataFound: boolean = false;
+  role: any = '';
+  done: any = [];
+  // Status: any = 'inactive'
   inlineForm: any
-  displayedColumns: any[] = ['fullname', 'username', 'password', 'action',]
-  Table: MatTableDataSource<PeriodicElement> = new MatTableDataSource<PeriodicElement>([]);
-  allData: any = [];
+  displayedColumns: any[] = ['fullname', 'username', 'id', 'Phonenumber', 'Role',  'action']
+  allData: any = new MatTableDataSource([]);
   updatdataoneData: any = [] = []
   editingIndex: number = -1;
   editedData: any = {};
-  droppedItem: any=[]=[]
+  droppedItem: any = [] = []
   userName: any = []
-  constructor(public getdata: LoginPageService, public router: Router, public dialog: MatDialog, public message: LoginService, public activateroute: ActivatedRoute) { }
+  filteradmin: any = []
+  form:any
+  constructor(public getdata: LoginPageService, public router: Router, public dialog: MatDialog, public message: LoginService, public activateroute: ActivatedRoute,public formBulider:FormBuilder) { }
   ngOnInit() {
-  
+    this.rolebase()
     this.loadData();
+    this.form = this.formBulider.group({
+      dropdown: [''],
+   
+    })
+
   }
 
   loadData() {
-    let user = sessionStorage.getItem('username')
-    this.userName.push(user)
-    console.log(this.userName)
+
     this.getdata.get().subscribe(
       (data: any) => {
+        debugger
+        data.forEach((admin: any, index: Number) => {
+          if (admin.Role === 'Superadmin') {
+            data.splice(index, 1)
+          }
+        }
+        )
         this.allData = new MatTableDataSource(data);
-        console.log('this.alldata', this.allData)
+
+        console.log(this.filteradmin, 'hhh')
+        console.log('this.alldata', this.allData.data)
+        this.allData.paginator = this.paginator;
+        this.allData.sort = this.sort;
       },
     );
   }
@@ -57,7 +74,9 @@ export class HomeComponent {
     this.getdata.delete(dataToDelete.id).subscribe(
       () => {
         this.allData.data.splice(index, 1);
-        this.allData = new MatTableDataSource(...this.allData.data)
+        this.allData = new MatTableDataSource([...this.allData.data])
+        this.allData.paginator = this.paginator;
+
       },
     );
     this.message.showSuccess('User deleted Successfull')
@@ -79,19 +98,7 @@ export class HomeComponent {
   }
 
   addnewUser() {
-    let dialogRef = this.dialog.open(EditdetailsComponent, {
-      width: '408px',
-      height: '435px',
-      panelClass: 'icon-outside',
-
-    });
-    dialogRef.afterClosed().subscribe((result: any) => {
-      if (result) {
-        this.loadData();
-        this.message.showSuccess("New user Add Successfull")
-      }
-
-    });
+    this.router.navigate(['/add'])
   }
 
   saveEdit(index: number) {
@@ -99,6 +106,7 @@ export class HomeComponent {
     this.getdata.patchdata(this.allData.data[index].id, this.editedData).subscribe(
       (data: any) => {
         this.allData = new MatTableDataSource(this.allData.data)
+        this.allData.paginator = this.paginator;
         console.log('Data updated successfully:', data);
         this.message.showSuccess('User data updated successfully');
       },
@@ -108,7 +116,6 @@ export class HomeComponent {
 
   cancel(index: any) {
     debugger
-    this.allData.data[index] = { ...this.editedData };
     this.editingIndex = -1;
 
   }
@@ -126,48 +133,68 @@ export class HomeComponent {
       }
     });
   }
-  dragDrop() {
-    this.router.navigateByUrl('/drop')
+  rolebase() {
+    let user = sessionStorage.getItem('token')
+    this.getdata.getdatabyId(user).subscribe((data: any) => {
+      this.role = data.Role
+      if (data.Role === 'Superadmin') {
+        this.displayedColumns.splice(5, 0, 'CreatedBy','Status')
+      }
+
+    }
+
+
+
+    )
+
   }
-  // drop(event: CdkDragDrop<any[]>) {
-  //   debugger
-  //    this.droppedItem = this.allData.data[event.previousIndex];
-  //    console.log( this.allData.data[event.previousIndex])
-  //    this.done.push(this.droppedItem);
-  //    this.allData.data.splice(event.previousIndex, 1);
+  applyFilter(event: any) {
+    debugger
+    const filterValue: any = (event.target as HTMLInputElement).value;
+    this.allData.filter = filterValue.trim().toLowerCase().toLocaleUpperCase();
 
-  //   console.log(this.allData.data[event.previousIndex])
-  // }
-  // drop(event: CdkDragDrop<any[]>) {
-  //   debugger;
-
-  //   // console.log(previousIndex)
-  //   console.log('Previous Index:', event.previousIndex);
-  //   console.log('All Data:', this.allData.data)
-  //   console.log(this.allData.data[event.previousIndex])
-  // }
-
-  // drop(event: CdkDragDrop<any[]>) {
-  //   debugger
-  //   if (event.previousContainer === event.container) {
-  //     moveItemInArray(this.allData.data, event.previousIndex, event.currentIndex);
-  //  
-  //     console.log(movedItem)
-  //   } else {
-  //     console.log('ff')
-  //     const movedItem = this.allData.data[event.previousIndex];
-  //     this.done.push(movedItem);
-  //     // console.log(mo)
-  //     this.allData.data.splice(event.previousIndex, 1);
-  //   }
-  // } 
-  drop(event: CdkDragDrop<any[]>) {
-  
-    if (event.previousContainer === event.container) {
-
-      const movedItem = this.allData.data[event.previousIndex];
-          this.done.push(movedItem);
-          console.log(movedItem)
   }
+  ngAfterViewInit() {
+
+    this.allData.paginator = this.paginator;
+
   }
+
+  isStatusActive = false;
+
+  status(id: any) {
+debugger
+     this.isStatusActive = !this.isStatusActive;
+
+    let data: any = {
+      Status: this.form.value.dropdown
+      
+    }
+    this.getdata.patchdata(id, data).subscribe((data: any) => {
+      this.allData = new MatTableDataSource(this.allData.data)
+      console.log(data)
+    }
+
+    )
+  }
+
+
+  Status:any = '';
+	onSelected(value:string,id:any){
+    debugger
+		this.Status = value;
+    let data: any = {
+      Status: this.Status
+      
+    }
+    this.getdata.patchdata(id, data).subscribe((data: any) => {
+      this.allData = new MatTableDataSource(this.allData.data)
+      console.log(data)
+    }
+
+    )
+
+
+    
+	}
 }

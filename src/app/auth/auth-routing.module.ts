@@ -13,7 +13,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
   { path: 'login', component: LoginComponent,canActivate: [unauthguard]  },
   { path: 'signup', component: SignUpComponent,canActivate: [unauthguard]  },
   { path: 'forgot',component:ForgotPasswordComponent},
-  // {path:'',component:ResetPasswordComponent},
+   {path:'reset/:id',component:ResetPasswordComponent},
  
 
 ];

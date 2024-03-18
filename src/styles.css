@@ -18,10 +18,10 @@
 }
 
 .mat-mdc-dialog-container .mdc-dialog__surface {
-    border-radius: var(--mdc-dialog-container-shape, 4px);
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
+    border-radius: var(--mdc-dialog-container-shape, 4px); 
+     overflow-x: hidden; 
+    overflow-y: hidden; 
+} 
 
 
 .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
@@ -33,7 +33,41 @@
     height: 30px;
 }
 
-body{
+ body{
     overflow: hidden;
+} 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.cstm_mat_inr .mat-form-field-outline {
+    box-shadow: inset 0px 0px 90px #fff;
+    border-radius: 10px;
 }
 
+app-header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1;
+}
+
+app-sidenav {
+    position: fixed;
+    top: 70px;
+    left: 0px;
+    width: 200px;
+    z-index: 1;
+}
+
+.main_layout {
+    position: relative;
+    width: 100%;
+    padding: 90px 15px 0 220px;
+}
+.alert-danger {
+    color: red;
+    background-color: #fff;
+    border-color: #fff;
+}

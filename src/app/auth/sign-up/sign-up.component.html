@@ -1,18 +1,21 @@
 <div class="login-page">
     <div class="form">
-        <h5 style="color: red;"> Sign-Up</h5>
+        <h5 style="color: red; font-size: 30px;"> Registration</h5>
         <form [formGroup]="sign">
             <input formControlName="fullname" type="text" placeholder="Enter your full name">
             <span *ngIf="sign.controls['fullname'].hasError('required') && sign.controls['fullname'].touched">Enter your
                 fullname</span>
-            <input formControlName="username" type="text" placeholder="Enter your username">
+            <input formControlName="username" type="text" placeholder="Enter your Email">
             <span *ngIf="sign.controls['username'].hasError('required') && sign.controls['username'].touched">Enter your
                 email</span>
             <span *ngIf="sign.controls['username'].hasError('email')">Please enter a valid email</span>
-            <input formControlName="Phonenumber" type="number" placeholder="Enter your number">
+            <input  (keypress)="numbers($event)" formControlName="Phonenumber" type="tele" placeholder="Enter your number">
             <span *ngIf="sign.controls['Phonenumber'].hasError('required') && sign.controls['Phonenumber'].touched">Enter your Phonenumber</span>
-             <span *ngIf="sign.controls['Phonenumber'].hasError('maxLength')">Please ten digit number only</span>
-            <input formControlName="password" type="text" placeholder="Enter your password">
+             <span *ngIf="sign.controls['Phonenumber'].hasError('maxlength')">Please ten digit number only</span>
+             <div class="password-container">
+                <input type="password" placeholder="Enter Password" formControlName="password" [type]="hide ? 'password' : 'text'">
+                  <i class="fa" [ngClass]="{'fa-eye': !hide, 'fa-eye-slash': hide}" (click)="toggleVisibility()"></i>
+              </div>
             <span *ngIf="sign.controls['password'].hasError('required') && sign.controls['password'].touched">Enter your
                 password</span>
             <span *ngIf="sign.controls['password'].hasError('pattern')">
@@ -24,9 +27,23 @@
             </span>
             <span *ngIf="sign.controls['password'].hasError('maxlength')">
                 Password cannot be longer than 30 characters.</span>
+                <mat-form-field>
+                    <mat-label>Role</mat-label>
+                    <select matNativeControl required formControlName="dropdown" >
+                        <option>choice</option>
+                      <option value="admin">Admin</option>
+                      <option value="user">User</option>
+                    </select>
+                    <span *ngIf=" sign.controls['dropdown'].hasError('required') && sign.controls['dropdown'].touched">Please select one Role</span>
+                  </mat-form-field>
+                  
         </form>
         <button  
         type="button" class="btn btn-primary" (click)="Submit()">Submit</button>
         <div class="text">
             <h6>Already have an account?<a href="./login">Login now</a></h6> </div>
 </div>
+
+      
+   
+ 

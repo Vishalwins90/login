@@ -22,7 +22,8 @@ const routes: Routes = [
     // },
   },
    {
-    path: 'reset/:id',
+    // path: 'reset/:id',
+      path: 'reset',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
  

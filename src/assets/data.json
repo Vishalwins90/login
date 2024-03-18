@@ -1,36 +1,53 @@
 {
   "users": [
     {
-      "id": "2",
-      "fullname": "Vishal",
-      "username": "sham@10",
-      "password": "Vishal@g",
-      "Phonenumber": 7009682727
-    },
-    {
       "id": "1",
-      "fullname": "qwer",
-      "username": "qwer@qee",
-      "password": "123q@Q"
+      "fullname": "Vishal",
+      "username": "Vishal@gmail.com",
+      "password": "Vishal@g5555",
+      "Phonenumber": 7009682727,
+      "Role": "Superadmin"
     },
     {
-      "id": "4",
-      "fullname": "sdfgh",
-      "username": "d@1",
-      "password": "dsrsr@adA1"
-    },
-    {
-      "id": "4e2e",
-      "fullname": "fghfghg",
-      "username": "dfdfd@1",
-      "password": "Vishal@1"
-    },
-    {
-      "id": "a01d",
-      "fullname": "Sham",
-      "username": "sham@1gmail.com",
+      "id": "12a8",
+      "fullname": "ram",
+      "username": "ram@1gmail.com",
       "password": "Vishal@1",
-      "Phonenumber": 7009682727
+      "Phonenumber": "4343434343",
+      "Role": "admin",
+      "CreatedBy": "Shivam",
+      "Status": "active"
+    },
+    {
+      "id": "af2a",
+      "fullname": "sham",
+      "username": "sham@1gmail.com",
+      "password": "Shiavm@1",
+      "Phonenumber": "4343434343",
+      "Role": "user",
+      "CreatedBy": "Shivam",
+      "Status": "active"
+    },
+    {
+      "id": "c7da",
+      "fullname": "Sumit",
+      "username": "SumitVerm@56gmail.com",
+      "password": "Sumit@12",
+      "Phonenumber": "4343434343",
+      "Role": "admin",
+      "CreatedBy": "Self",
+      "Status": "inactive"
+    }
+  ],
+  "usersdata": [
+    {
+      "id": "7d51",
+      "Title": "fdfdfd",
+      "Description": "dfdfdfdf",
+      "AddRewiew": "fdfdfdf",
+      "Startdate": "2024-03-03T18:30:00.000Z",
+      "Endate": "2024-03-10T18:30:00.000Z",
+      "Comment": "<p>dfdfdfddfdf</p>"
     }
   ]
 }

@@ -27,7 +27,11 @@ import { CommonModule } from '@angular/common';
 import { MAT_AUTOCOMPLETE_SCROLL_STRATEGY, MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { CKEditorModule } from 'ckeditor4-angular';
+import { MatFormFieldModule } from "@angular/material/form-field";
 @NgModule({
   declarations: [
     AppComponent
@@ -49,7 +53,12 @@ import { MatMenuModule } from '@angular/material/menu';
     NgOtpInputModule,
     CommonModule,
     MatAutocompleteModule,
-    ReactiveFormsModule, MatMenuModule
+    MatTooltipModule,
+    ReactiveFormsModule, MatMenuModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+
+    // CKEditorModule
 
   ],
   providers: [

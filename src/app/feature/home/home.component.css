@@ -69,3 +69,40 @@
   .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
+
+  /* .mdc-data-table__table{
+min-width: 75%;
+  } */
+
+  /*  */
+
+
+.table-container {
+  position: relative;
+  margin-top: 127px; /* Adjust according to your layout */
+}
+
+.pagination-container {
+  position: relative;
+  margin-top: 20px; /* Adjust according to your layout */
+}
+
+.col-md-4 {
+  flex: 0 0 auto;
+  width: 81.333333%;
+}
+
+/* Add width settings for specific columns */
+.mat-cell {
+  overflow: hidden;
+  text-overflow: ellipsis; /* Optional: add ellipsis for text overflow */
+  white-space: nowrap; /* Optional: prevent text wrapping */
+}
+
+.mat-cell.column1 { /* Adjust column1 to match your column name */
+  max-width: 150px; /* Adjust the width as needed */
+}
+
+.mat-cell.column2 { /* Adjust column2 to match your column name */
+  max-width: 200px; /* Adjust the width as needed */
+}
