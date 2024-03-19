@@ -1,1 +1,55 @@
-<p>user-request works!</p>
+<mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter data">
+  </mat-form-field>
+
+  
+  <div class="button">
+    <button style="position: absolute;
+        right: 43px;top: 96px" type="button" class="btn btn-primary" (click)="addnewUser()">Add-User</button>
+  </div>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link " id="nav-home-tab" style="background-color: aqua;" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="false" routerLink="/user">User-Request</a>
+      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="true" routerLink="/list">User-list</a>
+    </div>
+  </nav>
+  
+  <table mat-table matSort [dataSource]="allData" class="mat-elevation-z8" 
+  >
+    <ng-container *ngFor="let column of displayedColumns">
+      <ng-container [matColumnDef]="column">
+        <th  mat-header-cell *matHeaderCellDef mat-sort-header>{{ column | titlecase }}</th>
+        <td  mat-cell *matCellDef="let allData; let i = index">
+          <ng-container *ngIf="editingIndex !== i; ">
+         {{ column !== 'Status,'  ? allData[column] : '' }}
+         <!-- {{ column !== 'Status' ? allData[column] : '' }} -->
+         
+            <button *ngIf="column=='action'" mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary"
+              (click)="confirmStatus(i)">
+              <mat-icon>done</mat-icon>
+            </button>
+            <button *ngIf="column=='action'" mat-icon-button matTooltip="Click to Delete" class="iconbutton"
+              (click)="delete(i)" color="warn">
+              <mat-icon>clear</mat-icon>
+            </button>
+          </ng-container>
+       
+  
+        </td>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+            No data matching the filter.
+          </td>
+        </tr>
+      </ng-container>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div class="pagination" style="margin-left: 517px;
+  position: relative;
+  top: 23px;
+  ">
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>

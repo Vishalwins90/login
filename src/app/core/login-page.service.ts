@@ -29,7 +29,6 @@ return this.http.post(this.apiUrl,data)
   }
   
   patchdata(id:any,data:any){
-
     console.log(data)
     return this.http.patch(this.apiUrl+"/"+id, data);
 }
@@ -40,7 +39,9 @@ getdatabyId(id: any) {
 
 Senduserdata(data:any){
   return this.http.post(this.Url,data)
-  // return this.http.post(this.apiUrl+"/"+id, data);
 }
+ getuserdata(){
+  return this.http.get(this.Url)
+ }
 
 }

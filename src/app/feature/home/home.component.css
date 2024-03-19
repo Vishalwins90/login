@@ -106,3 +106,10 @@ min-width: 75%;
 .mat-cell.column2 { /* Adjust column2 to match your column name */
   max-width: 200px; /* Adjust the width as needed */
 }
+.nav-pills .nav-link.active, .nav-pills .show.nav-link {
+  color: black;
+  background-color: #ADD8E6;
+  /* width: 250px, */
+  
+  
+}

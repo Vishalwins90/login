@@ -2,27 +2,13 @@
   <mat-label>Search</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Filter data">
 </mat-form-field>
- <div class="div" style="position: relative;
- top: -71px;
- margin-left: 286px;
-">
-  <a class="btn text-white" data-mdb-ripple-init style="background-color: #55acee;" href="#!" role="button" routerLink="/user">
-    <span style="    position: relative;
-    top: 5px"><mat-icon>account_circle</mat-icon></span> 
-   User Request
-   </a>
- </div>
- <div class="div" style="position: relative;
- top: -109px;
- margin-left: 518px;
-">
-  <button routerLink="/listen"type="button" class="btn btn-warning" data-mdb-ripple-init>User-listening</button>
- </div>
 
-<div class="button">
-  <button style="position: absolute;
-      right: 43px;top: 96px" type="button" class="btn btn-primary" (click)="addnewUser()">Add-User</button>
-</div>
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab"  role="tab" aria-controls="nav-home" aria-selected="false" routerLink="/list">User-Request</a>
+    <a class="nav-item nav-link action" style="background-color: aqua;" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="true" routerLink="/user">User-list</a>
+  </div>
+</nav>
 
 <table mat-table matSort [dataSource]="allData" class="mat-elevation-z8" 
 >
@@ -31,18 +17,7 @@
       <th  mat-header-cell *matHeaderCellDef mat-sort-header>{{ column | titlecase }}</th>
       <td  mat-cell *matCellDef="let allData; let i = index">
         <ng-container *ngIf="editingIndex !== i; else editMode; ">
-       {{ column !== 'Status' ? allData[column] : '' }}
-       <!-- {{ column !== 'Status' ? allData[column] : '' }} -->
-          <form [formGroup]="form">
-            <div *ngIf="column=='Status'" class="col-md-4">
-              <select  #teams (change)="onSelected(teams.value,allData.id)" id="inputState"  class="form-select" formControlName="dropdown">
-                <option selected>{{allData.Status}}</option>
-                <option  value="active">active</option>
-                <option value="Inactive">Inactive</option>
-              </select>
-            </div>
-          </form>
-       
+       {{  allData[column] }} 
           <button *ngIf="column=='action'" mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary"
             (click)="edit(i)">
             <mat-icon>edit</mat-icon>

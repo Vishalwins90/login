@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserListeningComponent } from './user-listening.component';
+import { AdminassigenComponent } from './adminassigen.component';
 
-describe('UserListeningComponent', () => {
-  let component: UserListeningComponent;
-  let fixture: ComponentFixture<UserListeningComponent>;
+describe('AdminassigenComponent', () => {
+  let component: AdminassigenComponent;
+  let fixture: ComponentFixture<AdminassigenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserListeningComponent ]
+      declarations: [ AdminassigenComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UserListeningComponent);
+    fixture = TestBed.createComponent(AdminassigenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

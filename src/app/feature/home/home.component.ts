@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginPageService } from 'src/app/core/login-page.service';
@@ -25,6 +25,7 @@ export class HomeComponent {
   noDataFound: boolean = false;
   role: any = '';
   done: any = [];
+data:any=[]
   // Status: any = 'inactive'
   inlineForm: any
   displayedColumns: any[] = ['fullname', 'username', 'id', 'Phonenumber', 'Role',  'action']
@@ -66,6 +67,9 @@ export class HomeComponent {
         this.allData.sort = this.sort;
       },
     );
+    this.getdata.getuserdata().subscribe((data:any)=> {
+
+      })
   }
 
   delete(index: number) {
@@ -197,4 +201,9 @@ debugger
 
     
 	}
+
+  codenavigate(){
+    debugger
+    this.router.navigate(['/user']);
+  }
 }

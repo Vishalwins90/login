@@ -9,8 +9,9 @@ import { DasboardComponent } from './dasboard/dasboard.component';
 import { CodeEditorComponent } from './code-editor/code-editor.component';
 import { EditdetailsComponent } from './editdetails/editdetails.component';
 import { UserRequestComponent } from './user-request/user-request.component';
-import { UserListeningComponent } from './user-listening/user-listening.component';
-import { CodingRewiewlisteningComponent } from './coding-rewiewlistening/coding-rewiewlistening.component';
+import { UserIstComponent } from './user-ist/user-ist.component';
+
+
 
 
 
@@ -27,8 +28,8 @@ import { CodingRewiewlisteningComponent } from './coding-rewiewlistening/coding-
       {path: 'editor', component: CodeEditorComponent},
       {path: 'add',component:EditdetailsComponent},
       {path:'user',component:UserRequestComponent},
-      {path:'listen',component:UserListeningComponent},
-      {path:'user-listen',component:CodingRewiewlisteningComponent}
+       {path:'list',component:UserIstComponent},
+
     ],
   
   }

@@ -33,10 +33,10 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular"
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { UserRequestComponent } from './user-request/user-request.component';
-import { UserListeningComponent } from './user-listening/user-listening.component';
-import { CodingRewiewlisteningComponent } from './coding-rewiewlistening/coding-rewiewlistening.component';
-// import { MatInputModule } from '@angular/material/input';
-// import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { AdminassigenComponent } from './adminassigen/adminassigen.component';
+import {MatSelectModule} from '@angular/material/select';
+import { UserIstComponent } from './user-ist/user-ist.component';
+import {MatTabsModule} from '@angular/material/tabs';
 featureRoutingModule
 @NgModule({
   declarations: [
@@ -46,9 +46,10 @@ featureRoutingModule
     ConfirmationDialogComponent,
     UserRequestComponent,
     DasboardComponent,
-    UserListeningComponent,
     CodeEditorComponent,
-    CodingRewiewlisteningComponent
+    AdminassigenComponent,
+    UserIstComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -73,7 +74,9 @@ featureRoutingModule
     MatNativeDateModule,
     MatMomentDateModule,
     CKEditorModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSelectModule,
+    MatTabsModule
     
   ],
   providers: [DragDropService],
